@@ -10,7 +10,7 @@ const RAW_REPO = process.env.NEXT_PUBLIC_RELEASES_REPO ?? "";
 const RAW_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION ?? "1.1.0";
 const RELEASES_REPO = RAW_REPO.startsWith("https://github.com/")
   ? RAW_REPO
-  : "https://github.com/mrwind-up-bird/onboarding-tutor-releases";
+  : "https://github.com/mrwind-up-bird/landingpage-onboardingtutor";
 const VERSION = /^\d+\.\d+\.\d+$/.test(RAW_VERSION) ? RAW_VERSION : "1.1.0";
 const DOCKER_CMD = "docker compose --env-file .local.env up";
 
@@ -51,11 +51,11 @@ export function Downloads() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {downloads.map((dl, i) => {
             const isDetected = dl.platform === os;
             return (
-              <ScrollReveal key={dl.platform} delay={200 + i * 100}>
+              <ScrollReveal key={dl.filename} delay={200 + i * 100}>
                 <HolographicCard
                   className={`group bg-card/50 border rounded-xl p-8 transition-all h-full ${
                     isDetected
@@ -80,18 +80,41 @@ export function Downloads() {
                     </div>
                   </div>
                   <a
-                    href={`${RELEASES_REPO}/releases/latest/download/${dl.filename}`}
+                    href={`${RELEASES_REPO}/releases/download/v${VERSION}/${dl.filename}`}
                     className="inline-block font-mono text-sm font-semibold text-void bg-cyan px-6 py-2.5 rounded-lg no-underline hover:shadow-[var(--glow-cyan)] hover:-translate-y-0.5 transition-all"
                   >
-                    Download {dl.label}
+                    Download
                   </a>
                 </HolographicCard>
               </ScrollReveal>
             );
           })}
 
+          {/* Source code card */}
+          <ScrollReveal delay={600}>
+            <HolographicCard className="group bg-card/50 border border-white/[0.06] hover:border-cyan/20 rounded-xl p-8 transition-all h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">{"\uD83D\uDCE6"}</span>
+                <div>
+                  <div className="font-mono text-lg font-bold text-text-primary">
+                    {t("sourceTitle")}
+                  </div>
+                  <div className="font-mono text-xs text-text-dim">
+                    {t("sourceDesc")}
+                  </div>
+                </div>
+              </div>
+              <a
+                href={`${RELEASES_REPO}/archive/refs/tags/v${VERSION}.zip`}
+                className="inline-block font-mono text-sm font-semibold text-void bg-cyan px-6 py-2.5 rounded-lg no-underline hover:shadow-[var(--glow-cyan)] hover:-translate-y-0.5 transition-all"
+              >
+                Download .zip
+              </a>
+            </HolographicCard>
+          </ScrollReveal>
+
           {/* Docker + Ollama card */}
-          <ScrollReveal delay={500}>
+          <ScrollReveal delay={700}>
             <HolographicCard className="group bg-card/50 border border-white/[0.06] hover:border-cyan/20 rounded-xl p-8 transition-all h-full">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-3xl">{"\uD83D\uDC33"}</span>

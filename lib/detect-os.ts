@@ -51,11 +51,19 @@ export function getDownloads(version: string): DownloadInfo[] {
     },
     {
       platform: "linux",
-      label: "Linux",
+      label: "Linux (AppImage)",
       icon: "\uD83D\uDC27",
       filename: `Onboarding.Tutor-${version}.AppImage`,
       size: "110 MB",
-      format: "AppImage / .deb",
+      format: "AppImage",
+    },
+    {
+      platform: "linux",
+      label: "Linux (deb)",
+      icon: "\uD83D\uDC27",
+      filename: `onboardingtutor_${version}_amd64.deb`,
+      size: "75 MB",
+      format: "Debian (.deb)",
     },
   ];
 }

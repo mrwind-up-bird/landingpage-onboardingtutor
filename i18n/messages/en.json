@@ -136,6 +136,8 @@
     "titleAccent": "your platform.",
     "recommended": "Recommended for you",
     "allReleases": "View all releases on GitHub \u2192",
+    "sourceTitle": "Source Code",
+    "sourceDesc": "v1.1.0 \u00b7 ZIP archive",
     "dockerTitle": "Docker + Ollama",
     "dockerDesc": "Run fully local with Docker Compose",
     "copyCommand": "Copy command",
