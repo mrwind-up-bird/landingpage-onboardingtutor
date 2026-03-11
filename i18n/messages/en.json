@@ -13,5 +13,242 @@
   },
   "footer": {
     "rights": "All rights reserved."
+  },
+  "hero": {
+    "badge": "Now in Public Beta",
+    "jp": "\u30ca\u30ec\u30c3\u30b8\u30fb\u30f4\u30a9\u30fc\u30eb\u30c8",
+    "headlineTop": "From Knowledge Chaos",
+    "headlineBottom": "to Cognitive Clarity",
+    "subtitle": "The AI-powered knowledge vault that learns how your team thinks \u2014 built for developers who hate documentation but love shipping.",
+    "ctaPrimary": "Start Free Trial \u2192",
+    "ctaSecondary": "See Live Demo",
+    "scroll": "Scroll"
+  },
+  "problem": {
+    "label": "Problem",
+    "jp": "\u554f\u984c",
+    "title": "Traditional knowledge bases",
+    "titleAccent": "are fundamentally broken.",
+    "failTitle": "What Fails",
+    "fails": [
+      "They assume people will write docs (they won't)",
+      "They optimize for search, not learning",
+      "They treat knowledge as static snapshots, not living conversations",
+      "They ignore the tribal knowledge that actually runs your systems"
+    ],
+    "inversionBadge": "\u26a1 Ipcha Mistabra",
+    "inversionTitle": "The Inversion",
+    "inversionText": "Instead of forcing developers to document, we extract knowledge directly from your codebase \u2014 architecture, imports, symbols, complexity, churn. Point CKB at your repo, ask questions in plain English, and get answers grounded in real code context. The AI plans the queries. You just ask.",
+    "inversionBold": "extract knowledge directly from your codebase"
+  },
+  "superpowers": {
+    "label": "Superpowers",
+    "jp": "\u8d85\u80fd\u529b",
+    "title": "Four capabilities that",
+    "titleAccent": "change everything.",
+    "panels": [
+      {
+        "number": "PANEL 01",
+        "icon": "\ud83d\ude80",
+        "stat": "3 Days",
+        "subtitle": "Onboarding \u2014 Down from 3 months",
+        "features": [
+          "Interactive architecture graphs \u2014 explore modules, dependencies & call chains with React Flow",
+          "AI-guided onboarding plans \u2014 structured paths through your codebase",
+          "Ask anything in natural language \u2014 \"How does auth work?\" answered with real code context",
+          "Guided walkthroughs \u2014 AI explains not just what the code does, but why it exists"
+        ]
+      },
+      {
+        "number": "PANEL 02",
+        "icon": "\u26a1",
+        "stat": "14 CKB Tools",
+        "subtitle": "Codebase Knowledge Base \u2014 Semantic analysis",
+        "features": [
+          "Architecture analysis \u2014 treemaps, heatmaps & dependency graphs with metrics",
+          "Hotspot detection \u2014 churn, complexity & coupling scores per file",
+          "Symbol search & call graph tracing across your entire codebase",
+          "Cycle detection & semantic boundary inference via Tarjan\u2019s algorithm"
+        ]
+      },
+      {
+        "number": "PANEL 03",
+        "icon": "\ud83e\udde0",
+        "stat": "4 Providers",
+        "subtitle": "Pluggable AI \u2014 Choose your model",
+        "features": [
+          "Gemini, OpenAI, Anthropic \u2014 bring your own API key",
+          "Ollama support \u2014 run fully local, zero data leaves your machine",
+          "AI plans CKB queries automatically \u2014 no prompt engineering needed",
+          "Real-time WebSocket streaming \u2014 instant, token-by-token responses"
+        ]
+      },
+      {
+        "number": "PANEL 04",
+        "icon": "\ud83d\udd2e",
+        "stat": "Visual IDE",
+        "subtitle": "Code Intelligence \u2014 See your system",
+        "features": [
+          "Graph visualization \u2014 architecture, callgraph & file tree views with drill-down",
+          "Color modes \u2014 complexity, churn, LOC & type-based node coloring",
+          "Built-in IDE view \u2014 browse files with syntax highlighting",
+          "i18n ready \u2014 German & English out of the box, extensible"
+        ]
+      }
+    ]
+  },
+  "socialProof": {
+    "label": "Proof",
+    "jp": "\u8a3c\u62e0",
+    "title": "Teams are already",
+    "titleAccent": "shipping faster.",
+    "quotes": [
+      {
+        "stat": "87%",
+        "statNum": 87,
+        "text": "We reduced new developer ramp-up time by 87%. Juniors are pushing to production in their first week.",
+        "cite": "Lead Architect",
+        "company": "Series B SaaS Startup"
+      },
+      {
+        "stat": "47\u00d7",
+        "statNum": 47,
+        "text": "Our senior devs finally stopped answering the same questions 47 times a day. They\u2019re actually building now.",
+        "cite": "Engineering Manager",
+        "company": "Fortune 500"
+      }
+    ]
+  },
+  "demo": {
+    "label": "Demo",
+    "jp": "\u5b9f\u6f14",
+    "title": "See it in action.",
+    "titleAccent": "Live.",
+    "tryLive": "Try it Live \u2014 No Signup Required",
+    "comingSoon": "Coming Soon",
+    "loading": "Loading demo...",
+    "close": "Close"
+  },
+  "downloads": {
+    "label": "Downloads",
+    "jp": "\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9",
+    "title": "Download for",
+    "titleAccent": "your platform.",
+    "recommended": "Recommended for you",
+    "allReleases": "View all releases on GitHub \u2192",
+    "dockerTitle": "Docker + Ollama",
+    "dockerDesc": "Run fully local with Docker Compose",
+    "copyCommand": "Copy command",
+    "copied": "Copied!"
+  },
+  "pricing": {
+    "label": "Pricing",
+    "jp": "\u4fa1\u683c",
+    "title": "Simple pricing,",
+    "titleAccent": "no surprises.",
+    "noCard": "No credit card required.",
+    "tiers": {
+      "free": {
+        "name": "Open Source",
+        "price": "Free",
+        "period": "forever",
+        "description": "For individual developers and small projects",
+        "cta": "Download Now",
+        "features": [
+          "Full CKB analysis (14 tools)",
+          "Single repo support",
+          "Ollama (local AI) included",
+          "Community support",
+          "All graph visualizations"
+        ]
+      },
+      "team": {
+        "name": "Team",
+        "price": "$29",
+        "period": "/user/month",
+        "description": "For teams that ship together",
+        "cta": "Start Free Trial \u2192",
+        "badge": "Most Popular",
+        "features": [
+          "Everything in Free",
+          "Multi-repo workspace",
+          "Cloud AI providers (Gemini, OpenAI, Anthropic)",
+          "Team knowledge sharing",
+          "Priority support",
+          "SSO & SAML"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "period": "",
+        "description": "For organizations with complex needs",
+        "cta": "Contact Sales",
+        "features": [
+          "Everything in Team",
+          "On-premise deployment",
+          "Custom AI model integration",
+          "Dedicated account manager",
+          "SLA & compliance",
+          "Audit logging"
+        ]
+      }
+    }
+  },
+  "tech": {
+    "label": "Architecture",
+    "jp": "\u30a2\u30fc\u30ad\u30c6\u30af\u30c1\u30e3",
+    "title": "Built for",
+    "titleAccent": "real engineering.",
+    "blocks": [
+      {
+        "title": "Sources",
+        "items": ["Git repos", "File system", "Import graph", "Symbol table", "Churn history"]
+      },
+      {
+        "title": "CKB Engine",
+        "items": ["14 analysis tools", "Tarjan\u2019s SCC", "Complexity metrics", "Dependency graph", "Hotspot detection"]
+      },
+      {
+        "title": "AI + Frontend",
+        "items": ["Multi-provider LLM", "WebSocket streaming", "React Flow graphs", "Interactive IDE", "i18n support"]
+      }
+    ],
+    "security": {
+      "title": "Security-first",
+      "badges": ["Self-hosted", "Local AI (Ollama)", "No telemetry", "Your data stays yours"]
+    }
+  },
+  "ctaFinal": {
+    "jp": "\u59cb\u3081\u308b",
+    "title": "Ready to stop losing",
+    "titleAccent": "tribal knowledge?",
+    "subtitle": "Join teams shipping faster with AI-powered codebase understanding.",
+    "ctaPrimary": "Start Free Trial \u2192",
+    "ctaSecondary": "See Live Demo",
+    "ctaTertiary": "Read the Docs"
+  },
+  "form": {
+    "title": "Start Free Trial",
+    "subtitle": "No credit card required",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@company.com",
+    "teamSize": "Team Size",
+    "useCase": "Primary Use Case",
+    "useCaseOptions": {
+      "onboarding": "Onboarding",
+      "architecture": "Architecture",
+      "codeReview": "Code Review",
+      "knowledgeBase": "Knowledge Base",
+      "other": "Other"
+    },
+    "submit": "Start Free Trial \u2192",
+    "submitting": "Submitting...",
+    "success": "We'll be in touch!",
+    "error": "Something went wrong.",
+    "retry": "Try again",
+    "contact": "Contact us directly"
   }
 }

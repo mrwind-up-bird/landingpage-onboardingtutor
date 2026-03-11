@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "nyxCore — Cognitive Vault",
-    "description": "Der KI-gestützte Wissenstresor, der lernt wie Ihr Team denkt."
+    "description": "Der KI-gest\u00fctzte Wissenstresor, der lernt wie Ihr Team denkt."
   },
   "nav": {
     "problem": "Problem",
@@ -13,5 +13,242 @@
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten."
+  },
+  "hero": {
+    "badge": "Jetzt in Public Beta",
+    "jp": "\u30ca\u30ec\u30c3\u30b8\u30fb\u30f4\u30a9\u30fc\u30eb\u30c8",
+    "headlineTop": "Vom Wissens-Chaos",
+    "headlineBottom": "zur kognitiven Klarheit",
+    "subtitle": "Der KI-gest\u00fctzte Wissenstresor, der lernt wie Ihr Team denkt \u2014 f\u00fcr Entwickler, die Docs hassen aber Shipping lieben.",
+    "ctaPrimary": "Kostenlos starten \u2192",
+    "ctaSecondary": "Live Demo",
+    "scroll": "Scrollen"
+  },
+  "problem": {
+    "label": "Problem",
+    "jp": "\u554f\u984c",
+    "title": "Traditionelle Wissensdatenbanken",
+    "titleAccent": "sind grundlegend kaputt.",
+    "failTitle": "Was scheitert",
+    "fails": [
+      "Sie nehmen an, dass Leute Docs schreiben (werden sie nicht)",
+      "Sie optimieren f\u00fcr Suche, nicht f\u00fcr Lernen",
+      "Sie behandeln Wissen als statische Momentaufnahmen, nicht als lebendige Gespr\u00e4che",
+      "Sie ignorieren das Stammwissen, das eure Systeme tats\u00e4chlich am Laufen h\u00e4lt"
+    ],
+    "inversionBadge": "\u26a1 Ipcha Mistabra",
+    "inversionTitle": "Die Umkehrung",
+    "inversionText": "Statt Entwickler zu zwingen zu dokumentieren, extrahieren wir Wissen direkt aus eurer Codebase \u2014 Architektur, Imports, Symbole, Komplexit\u00e4t, Churn. Richtet CKB auf euer Repo, stellt Fragen auf Deutsch, und bekommt Antworten basierend auf echtem Code-Kontext. Die KI plant die Abfragen. Ihr fragt einfach.",
+    "inversionBold": "extrahieren wir Wissen direkt aus eurer Codebase"
+  },
+  "superpowers": {
+    "label": "Superkr\u00e4fte",
+    "jp": "\u8d85\u80fd\u529b",
+    "title": "Vier F\u00e4higkeiten, die",
+    "titleAccent": "alles ver\u00e4ndern.",
+    "panels": [
+      {
+        "number": "PANEL 01",
+        "icon": "\ud83d\ude80",
+        "stat": "3 Tage",
+        "subtitle": "Onboarding \u2014 Runter von 3 Monaten",
+        "features": [
+          "Interaktive Architektur-Graphen \u2014 Module, Abh\u00e4ngigkeiten & Call-Chains mit React Flow erkunden",
+          "KI-gef\u00fchrte Onboarding-Pl\u00e4ne \u2014 strukturierte Pfade durch eure Codebase",
+          "Frag alles in nat\u00fcrlicher Sprache \u2014 \"Wie funktioniert die Auth?\" beantwortet mit echtem Code-Kontext",
+          "Gef\u00fchrte Walkthroughs \u2014 KI erkl\u00e4rt nicht nur was der Code tut, sondern warum er existiert"
+        ]
+      },
+      {
+        "number": "PANEL 02",
+        "icon": "\u26a1",
+        "stat": "14 CKB Tools",
+        "subtitle": "Codebase Knowledge Base \u2014 Semantische Analyse",
+        "features": [
+          "Architektur-Analyse \u2014 Treemaps, Heatmaps & Dependency-Graphen mit Metriken",
+          "Hotspot-Erkennung \u2014 Churn-, Komplexit\u00e4ts- & Kopplungs-Scores pro Datei",
+          "Symbol-Suche & Call-Graph-Tracing \u00fcber die gesamte Codebase",
+          "Zyklenerkennung & semantische Grenzinferenz via Tarjans Algorithmus"
+        ]
+      },
+      {
+        "number": "PANEL 03",
+        "icon": "\ud83e\udde0",
+        "stat": "4 Anbieter",
+        "subtitle": "Pluggable KI \u2014 W\u00e4hle dein Modell",
+        "features": [
+          "Gemini, OpenAI, Anthropic \u2014 eigenen API-Key mitbringen",
+          "Ollama-Support \u2014 komplett lokal, keine Daten verlassen deine Maschine",
+          "KI plant CKB-Abfragen automatisch \u2014 kein Prompt-Engineering n\u00f6tig",
+          "Echtzeit-WebSocket-Streaming \u2014 sofortige, Token-f\u00fcr-Token-Antworten"
+        ]
+      },
+      {
+        "number": "PANEL 04",
+        "icon": "\ud83d\udd2e",
+        "stat": "Visuelle IDE",
+        "subtitle": "Code Intelligence \u2014 Sieh dein System",
+        "features": [
+          "Graph-Visualisierung \u2014 Architektur-, Callgraph- & Dateibaum-Ansichten mit Drill-Down",
+          "Farbmodi \u2014 Komplexit\u00e4t, Churn, LOC & typbasierte Knoten-F\u00e4rbung",
+          "Eingebaute IDE-Ansicht \u2014 Dateien mit Syntax-Highlighting durchsuchen",
+          "i18n-ready \u2014 Deutsch & Englisch ab Werk, erweiterbar"
+        ]
+      }
+    ]
+  },
+  "socialProof": {
+    "label": "Beweis",
+    "jp": "\u8a3c\u62e0",
+    "title": "Teams shippen bereits",
+    "titleAccent": "schneller.",
+    "quotes": [
+      {
+        "stat": "87%",
+        "statNum": 87,
+        "text": "Wir haben die Einarbeitungszeit neuer Entwickler um 87% reduziert. Juniors pushen in ihrer ersten Woche in die Produktion.",
+        "cite": "Lead Architect",
+        "company": "Series B SaaS Startup"
+      },
+      {
+        "stat": "47\u00d7",
+        "statNum": 47,
+        "text": "Unsere Senior-Devs beantworten endlich nicht mehr 47 Mal am Tag die gleichen Fragen. Sie bauen jetzt tats\u00e4chlich.",
+        "cite": "Engineering Manager",
+        "company": "Fortune 500"
+      }
+    ]
+  },
+  "demo": {
+    "label": "Demo",
+    "jp": "\u5b9f\u6f14",
+    "title": "Sieh es in Aktion.",
+    "titleAccent": "Live.",
+    "tryLive": "Jetzt live testen \u2014 Keine Anmeldung n\u00f6tig",
+    "comingSoon": "Kommt bald",
+    "loading": "Demo wird geladen...",
+    "close": "Schlie\u00dfen"
+  },
+  "downloads": {
+    "label": "Downloads",
+    "jp": "\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9",
+    "title": "Download f\u00fcr",
+    "titleAccent": "deine Plattform.",
+    "recommended": "Empfohlen f\u00fcr dich",
+    "allReleases": "Alle Releases auf GitHub ansehen \u2192",
+    "dockerTitle": "Docker + Ollama",
+    "dockerDesc": "Komplett lokal mit Docker Compose",
+    "copyCommand": "Befehl kopieren",
+    "copied": "Kopiert!"
+  },
+  "pricing": {
+    "label": "Preise",
+    "jp": "\u4fa1\u683c",
+    "title": "Einfache Preise,",
+    "titleAccent": "keine \u00dcberraschungen.",
+    "noCard": "Keine Kreditkarte erforderlich.",
+    "tiers": {
+      "free": {
+        "name": "Open Source",
+        "price": "Kostenlos",
+        "period": "f\u00fcr immer",
+        "description": "F\u00fcr einzelne Entwickler und kleine Projekte",
+        "cta": "Jetzt herunterladen",
+        "features": [
+          "Volle CKB-Analyse (14 Tools)",
+          "Einzelnes Repo",
+          "Ollama (lokale KI) inklusive",
+          "Community Support",
+          "Alle Graph-Visualisierungen"
+        ]
+      },
+      "team": {
+        "name": "Team",
+        "price": "29\u20ac",
+        "period": "/Nutzer/Monat",
+        "description": "F\u00fcr Teams, die zusammen shippen",
+        "cta": "Kostenlos testen \u2192",
+        "badge": "Am beliebtesten",
+        "features": [
+          "Alles aus Free",
+          "Multi-Repo Workspace",
+          "Cloud KI-Anbieter (Gemini, OpenAI, Anthropic)",
+          "Team-Wissensaustausch",
+          "Priority Support",
+          "SSO & SAML"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Individuell",
+        "period": "",
+        "description": "F\u00fcr Organisationen mit komplexen Anforderungen",
+        "cta": "Vertrieb kontaktieren",
+        "features": [
+          "Alles aus Team",
+          "On-Premise Deployment",
+          "Custom KI-Modell-Integration",
+          "Dedizierter Account Manager",
+          "SLA & Compliance",
+          "Audit-Logging"
+        ]
+      }
+    }
+  },
+  "tech": {
+    "label": "Architektur",
+    "jp": "\u30a2\u30fc\u30ad\u30c6\u30af\u30c1\u30e3",
+    "title": "Gebaut f\u00fcr",
+    "titleAccent": "echtes Engineering.",
+    "blocks": [
+      {
+        "title": "Quellen",
+        "items": ["Git Repos", "Dateisystem", "Import-Graph", "Symboltabelle", "Churn-Verlauf"]
+      },
+      {
+        "title": "CKB Engine",
+        "items": ["14 Analyse-Tools", "Tarjans SCC", "Komplexit\u00e4tsmetriken", "Dependency-Graph", "Hotspot-Erkennung"]
+      },
+      {
+        "title": "KI + Frontend",
+        "items": ["Multi-Provider LLM", "WebSocket-Streaming", "React Flow Graphen", "Interaktive IDE", "i18n-Support"]
+      }
+    ],
+    "security": {
+      "title": "Security-first",
+      "badges": ["Self-hosted", "Lokale KI (Ollama)", "Keine Telemetrie", "Deine Daten bleiben bei dir"]
+    }
+  },
+  "ctaFinal": {
+    "jp": "\u59cb\u3081\u308b",
+    "title": "Bereit, kein Stammwissen",
+    "titleAccent": "mehr zu verlieren?",
+    "subtitle": "Schlie\u00df dich Teams an, die schneller shippen mit KI-gest\u00fctztem Codebase-Verst\u00e4ndnis.",
+    "ctaPrimary": "Kostenlos starten \u2192",
+    "ctaSecondary": "Live Demo",
+    "ctaTertiary": "Docs lesen"
+  },
+  "form": {
+    "title": "Kostenlos testen",
+    "subtitle": "Keine Kreditkarte erforderlich",
+    "name": "Name",
+    "namePlaceholder": "Dein Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "du@firma.de",
+    "teamSize": "Teamgr\u00f6\u00dfe",
+    "useCase": "Haupt-Anwendungsfall",
+    "useCaseOptions": {
+      "onboarding": "Onboarding",
+      "architecture": "Architektur",
+      "codeReview": "Code Review",
+      "knowledgeBase": "Wissensdatenbank",
+      "other": "Andere"
+    },
+    "submit": "Kostenlos testen \u2192",
+    "submitting": "Wird gesendet...",
+    "success": "Wir melden uns!",
+    "error": "Etwas ist schiefgelaufen.",
+    "retry": "Nochmal versuchen",
+    "contact": "Direkt kontaktieren"
   }
 }
