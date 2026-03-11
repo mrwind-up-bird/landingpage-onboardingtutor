@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="nyxCore Cognitive Vault — The AI-powered knowledge vault that learns how your team thinks. From knowledge chaos to cognitive clarity.">
+  <meta name="theme-color" content="#1a0b2e">
+  <meta property="og:title" content="nyxCore Cognitive Vault">
+  <meta property="og:description" content="The AI-powered knowledge vault that learns how your team thinks — built for developers who hate documentation but love shipping.">
+  <title>nyxCore — Cognitive Vault</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a0b2e'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%2300f5ff' font-size='20' font-family='monospace'>N</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-void: #070212;
+      --bg-deep: #0d0618;
+      --bg-primary: #1a0b2e;
+      --bg-card: #1e1035;
+      --bg-card-hover: #261545;
+      --cyan: #00f5ff;
+      --cyan-dim: #00b8bf;
+      --orange: #ff6b35;
+      --orange-dim: #cc5529;
+      --purple: #8b5cf6;
+      --purple-bright: #a78bfa;
+      --green: #00ff88;
+      --red: #ff3366;
+      --text-primary: #e8e6f0;
+      --text-muted: #7a7590;
+      --text-dim: #4a4565;
+      --glow-cyan: 0 0 30px rgba(0, 245, 255, 0.25), 0 0 60px rgba(0, 245, 255, 0.1);
+      --glow-orange: 0 0 30px rgba(255, 107, 53, 0.25), 0 0 60px rgba(255, 107, 53, 0.1);
+      --glow-purple: 0 0 30px rgba(139, 92, 246, 0.25);
+      --border-glow: 1px solid rgba(0, 245, 255, 0.15);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --max-w: 1200px;
+      --section-pad: clamp(80px, 12vh, 140px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      background: var(--bg-void);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== SCROLL PROGRESS ===== */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--orange));
+      z-index: 10000;
+      transition: width 0.1s linear;
+      width: 0%;
+    }
+
+    /* ===== SCANLINES OVERLAY ===== */
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+    }
+
+    /* ===== CODE RAIN CANVAS ===== */
+    #code-rain {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.12;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 clamp(20px, 4vw, 48px);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(13, 6, 24, 0.85);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      border-bottom-color: rgba(0, 245, 255, 0.08);
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--cyan);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo .logo-bracket { color: var(--text-dim); font-weight: 300; }
+    .nav-logo .logo-dot { color: var(--orange); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--cyan);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--bg-void) !important;
+      background: var(--cyan);
+      padding: 8px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: #33f7ff;
+      box-shadow: var(--glow-cyan);
+      transform: translateY(-1px);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    /* ===== SECTION UTILITIES ===== */
+    .section-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: var(--section-pad) clamp(20px, 5vw, 48px);
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--cyan);
+    }
+    .section-label .jp {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .section-title .accent { color: var(--cyan); }
+    .section-title .warn { color: var(--orange); }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      #code-rain { display: none; }
+      .scanlines { display: none; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px clamp(20px, 5vw, 48px) 80px;
+    }
+    .hero-content { max-width: 860px; position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--cyan);
+      background: rgba(0, 245, 255, 0.06);
+      border: 1px solid rgba(0, 245, 255, 0.15);
+      border-radius: 100px;
+      padding: 6px 18px;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .hero-badge .pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.4); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 245, 255, 0); }
+    }
+    .hero h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--cyan) 50%, var(--purple-bright) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 8s ease-in-out infinite;
+    }
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .hero-jp {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      color: var(--text-dim);
+      letter-spacing: 0.3em;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .hero p {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--bg-void);
+      background: var(--cyan);
+      border: none;
+      padding: 14px 32px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-primary:hover {
+      box-shadow: var(--glow-cyan);
+      transform: translateY(-2px);
+    }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-secondary {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--cyan);
+      background: transparent;
+      border: 1px solid rgba(0, 245, 255, 0.25);
+      padding: 14px 32px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(0, 245, 255, 0.06);
+      border-color: rgba(0, 245, 255, 0.5);
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      animation: float 3s ease-in-out infinite;
+    }
+    .scroll-hint svg { width: 16px; height: 16px; stroke: var(--text-dim); }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ===== PROBLEM SECTION ===== */
+    .problem-section {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, var(--bg-void) 0%, var(--bg-deep) 100%);
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    .problem-card {
+      background: rgba(30, 16, 53, 0.6);
+      border: 1px solid rgba(255, 51, 102, 0.12);
+      border-radius: var(--radius);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), transparent);
+    }
+    .problem-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--red);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .problem-card h3::before {
+      content: '//';
+      color: var(--text-dim);
+    }
+    .problem-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .problem-list li {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      padding-left: 24px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .problem-list li::before {
+      content: '×';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+    .inversion-card {
+      background: rgba(0, 245, 255, 0.03);
+      border: 1px solid rgba(0, 245, 255, 0.12);
+      border-radius: var(--radius);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .inversion-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+    }
+    .inversion-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--orange);
+      background: rgba(255, 107, 53, 0.08);
+      border: 1px solid rgba(255, 107, 53, 0.2);
+      padding: 4px 12px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 20px;
+    }
+    .inversion-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      margin-bottom: 24px;
+    }
+    .inversion-card p {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+    .inversion-card p strong {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    /* ===== SUPERPOWERS / MANGA PANELS ===== */
+    .powers-section {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-deep);
+    }
+    .manga-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .manga-panel {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.3s ease;
+      will-change: transform;
+    }
+    .manga-panel:hover {
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--glow-cyan);
+    }
+    .manga-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 245, 255, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .manga-panel:hover::after { opacity: 1; }
+    .manga-panel.panel-orange { border-color: rgba(255, 107, 53, 0.12); }
+    .manga-panel.panel-orange:hover { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--glow-orange); }
+    .manga-panel.panel-purple { border-color: rgba(139, 92, 246, 0.12); }
+    .manga-panel.panel-purple:hover { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--glow-purple); }
+    .manga-panel.panel-green { border-color: rgba(0, 255, 136, 0.12); }
+    .manga-panel.panel-green:hover { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 255, 136, 0.2); }
+    .panel-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+    }
+    .panel-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .panel-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .panel-stat .cyan { color: var(--cyan); }
+    .panel-stat .orange { color: var(--orange); }
+    .panel-stat .purple { color: var(--purple-bright); }
+    .panel-stat .green { color: var(--green); }
+    .panel-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+    .panel-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .panel-features li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .panel-features li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .panel-orange .panel-features li::before { color: var(--orange); }
+    .panel-purple .panel-features li::before { color: var(--purple-bright); }
+    .panel-green .panel-features li::before { color: var(--green); }
+
+    /* ===== SOCIAL PROOF ===== */
+    .proof-section {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-void) 100%);
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .proof-card {
+      background: rgba(30, 16, 53, 0.4);
+      border: 1px solid rgba(0, 245, 255, 0.06);
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+    }
+    .proof-quote-mark {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 4rem;
+      color: rgba(0, 245, 255, 0.1);
+      line-height: 1;
+      position: absolute;
+      top: 16px;
+      left: 24px;
+    }
+    .proof-card blockquote {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .proof-card cite {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-style: normal;
+      color: var(--text-dim);
+      display: block;
+    }
+    .proof-card cite strong {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .proof-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+
+    /* ===== PRICING ===== */
+    .pricing-section {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-void);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      align-items: start;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.06);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      position: relative;
+      transition: transform 0.15s ease, box-shadow 0.3s ease;
+    }
+    .pricing-card:hover {
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    }
+    .pricing-card.featured {
+      border-color: rgba(0, 245, 255, 0.2);
+      background: linear-gradient(165deg, var(--bg-card) 0%, rgba(0, 245, 255, 0.04) 100%);
+    }
+    .pricing-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+    .pricing-popular {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--bg-void);
+      background: var(--cyan);
+      padding: 4px 14px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .pricing-tier {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .pricing-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+    .pricing-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-dim);
+    }
+    .pricing-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .pricing-features li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.4;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .pricing-card .btn-primary, .pricing-card .btn-secondary {
+      width: 100%;
+      text-align: center;
+      display: block;
+      font-size: 0.8rem;
+      padding: 12px 24px;
+    }
+
+    /* ===== TECH DEEP DIVE ===== */
+    .tech-section {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, var(--bg-void) 0%, var(--bg-deep) 100%);
+    }
+    .arch-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 48px 0;
+      flex-wrap: wrap;
+    }
+    .arch-block {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 28px 24px;
+      min-width: 220px;
+      text-align: center;
+      position: relative;
+    }
+    .arch-block h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .arch-block ul {
+      list-style: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .arch-arrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.8rem;
+      color: var(--text-dim);
+      padding: 0 20px;
+      animation: arrow-pulse 2s ease-in-out infinite;
+    }
+    @keyframes arrow-pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; color: var(--cyan); }
+    }
+    .security-badges {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .sec-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(0, 245, 255, 0.04);
+      border: 1px solid rgba(0, 245, 255, 0.1);
+      border-radius: 6px;
+      padding: 8px 16px;
+      letter-spacing: 0.05em;
+    }
+    .sec-badge .badge-icon { color: var(--green); font-size: 0.9rem; }
+
+    /* ===== FINAL CTA ===== */
+    .cta-section {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      background: var(--bg-deep);
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .btn-tertiary {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      padding: 14px 24px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .btn-tertiary::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: var(--text-dim);
+      transition: background 0.3s ease;
+    }
+    .btn-tertiary:hover { color: var(--cyan); }
+    .btn-tertiary:hover::after { background: var(--cyan); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-void);
+      border-top: 1px solid rgba(0, 245, 255, 0.06);
+    }
+    .footer-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 48px clamp(20px, 5vw, 48px);
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .footer-brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+    .footer-brand-sub {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      letter-spacing: 0.05em;
+    }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+    .footer-badges {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      padding: 4px 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .pixel-egg {
+      cursor: pointer;
+      user-select: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .pixel-egg:hover { color: var(--purple-bright); }
+    .pixel-egg.activated {
+      color: var(--cyan);
+      text-shadow: 0 0 10px var(--cyan);
+    }
+
+    /* ===== TERMINAL MODE (Easter Egg) ===== */
+    body.terminal-mode {
+      background: #000 !important;
+    }
+    body.terminal-mode * {
+      font-family: 'JetBrains Mono', monospace !important;
+      border-color: rgba(0, 255, 136, 0.15) !important;
+    }
+    body.terminal-mode nav, body.terminal-mode section, body.terminal-mode footer {
+      background: #000 !important;
+    }
+    body.terminal-mode .scanlines {
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0, 255, 136, 0.03) 2px, rgba(0, 255, 136, 0.03) 4px
+      ) !important;
+    }
+    body.terminal-mode h1, body.terminal-mode h2, body.terminal-mode h3, body.terminal-mode h4 {
+      -webkit-text-fill-color: var(--green) !important;
+      background: none !important;
+      color: var(--green) !important;
+    }
+    body.terminal-mode .section-label, body.terminal-mode .nav-logo,
+    body.terminal-mode .btn-primary, body.terminal-mode .nav-cta {
+      color: #000 !important;
+      background: var(--green) !important;
+      -webkit-text-fill-color: #000 !important;
+    }
+    body.terminal-mode .pricing-popular { background: var(--green) !important; }
+    body.terminal-mode a, body.terminal-mode .panel-features li::before,
+    body.terminal-mode .pricing-features li::before { color: var(--green) !important; }
+    body.terminal-mode p, body.terminal-mode li, body.terminal-mode span,
+    body.terminal-mode blockquote, body.terminal-mode cite { color: rgba(0, 255, 136, 0.7) !important; }
+    .terminal-banner {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: var(--green);
+      color: #000;
+      text-align: center;
+      padding: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    body.terminal-mode .terminal-banner { display: block; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .problem-grid, .manga-grid, .proof-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+      .arch-diagram { flex-direction: column; }
+      .arch-arrow { transform: rotate(90deg); padding: 12px 0; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(7, 2, 18, 0.97);
+        backdrop-filter: blur(20px);
+        padding: 40px;
+        gap: 24px;
+        z-index: 999;
+      }
+      .hamburger { display: flex; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+  <canvas id="code-rain" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="terminal-banner">TERMINAL MODE ACTIVATED — CLICK ░▒▓ AGAIN TO EXIT</div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <span class="logo-bracket">{</span>nyx<span class="logo-dot">.</span>Core<span class="logo-bracket">}</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#powers">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#tech">Tech</a></li>
+      <li><a href="#start" class="nav-cta">Start Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="pulse"></span>
+        Now in Public Beta
+      </div>
+      <span class="hero-jp reveal reveal-delay-1">ナレッジ・ヴォールト</span>
+      <h1 class="reveal reveal-delay-2">From Knowledge Chaos<br>to Cognitive Clarity</h1>
+      <p class="reveal reveal-delay-3">The AI-powered knowledge vault that learns how your team thinks — built for developers who hate documentation but love shipping.</p>
+      <div class="hero-ctas reveal reveal-delay-4">
+        <a href="#start" class="btn-primary">Start Free Trial →</a>
+        <a href="#demo" class="btn-secondary">See Live Demo</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem-section" id="problem">
+    <div class="section-wrap">
+      <div class="section-label reveal">Problem <span class="jp">問題</span></div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Traditional knowledge bases<br><span class="warn">are fundamentally broken.</span>
+      </h2>
+      <div class="problem-grid">
+        <div class="problem-card reveal reveal-delay-2">
+          <h3>What Fails</h3>
+          <ul class="problem-list">
+            <li>They assume people will write docs (they won't)</li>
+            <li>They optimize for search, not learning</li>
+            <li>They treat knowledge as static snapshots, not living conversations</li>
+            <li>They ignore the tribal knowledge that actually runs your systems</li>
+          </ul>
+        </div>
+        <div class="inversion-card reveal reveal-delay-3">
+          <div class="inversion-badge">⚡ Ipcha Mistabra</div>
+          <h3>The Inversion</h3>
+          <p>Instead of forcing developers to document, we <strong>extract knowledge directly from your codebase</strong> — architecture, imports, symbols, complexity, churn. Point CKB at your repo, ask questions in plain English, and get answers grounded in real code context. The AI plans the queries. You just ask.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPERPOWERS -->
+  <section class="powers-section" id="powers">
+    <div class="section-wrap">
+      <div class="section-label reveal">Superpowers <span class="jp">超能力</span></div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Four capabilities that<br><span class="accent">change everything.</span>
+      </h2>
+      <div class="manga-grid">
+        <!-- Panel 01: Onboarding -->
+        <div class="manga-panel reveal reveal-delay-1" data-tilt>
+          <div class="panel-number">PANEL 01</div>
+          <span class="panel-icon">🚀</span>
+          <div class="panel-stat"><span class="cyan">3 Days</span></div>
+          <div class="panel-subtitle">Onboarding — Down from 3 months</div>
+          <ul class="panel-features">
+            <li>Interactive architecture graphs — explore modules, dependencies &amp; call chains with React Flow</li>
+            <li>AI-guided onboarding plans — structured paths through your codebase</li>
+            <li>Ask anything in natural language — "How does auth work?" answered with real code context</li>
+            <li>Guided walkthroughs — AI explains not just what the code does, but why it exists</li>
+          </ul>
+        </div>
+        <!-- Panel 02: CKB Engine -->
+        <div class="manga-panel panel-orange reveal reveal-delay-2" data-tilt>
+          <div class="panel-number">PANEL 02</div>
+          <span class="panel-icon">⚡</span>
+          <div class="panel-stat"><span class="orange">14 CKB Tools</span></div>
+          <div class="panel-subtitle">Codebase Knowledge Base — Semantic analysis</div>
+          <ul class="panel-features">
+            <li>Architecture analysis — treemaps, heatmaps &amp; dependency graphs with metrics</li>
+            <li>Hotspot detection — churn, complexity &amp; coupling scores per file</li>
+            <li>Symbol search &amp; call graph tracing across your entire codebase</li>
+            <li>Cycle detection &amp; semantic boundary inference via Tarjan's algorithm</li>
+          </ul>
+        </div>
+        <!-- Panel 03: Multi-Provider AI -->
+        <div class="manga-panel panel-green reveal reveal-delay-3" data-tilt>
+          <div class="panel-number">PANEL 03</div>
+          <span class="panel-icon">🧠</span>
+          <div class="panel-stat"><span class="green">4 Providers</span></div>
+          <div class="panel-subtitle">Pluggable AI — Choose your model</div>
+          <ul class="panel-features">
+            <li>Gemini, OpenAI, Anthropic — bring your own API key</li>
+            <li>Ollama support — run fully local, zero data leaves your machine</li>
+            <li>AI plans CKB queries automatically — no prompt engineering needed</li>
+            <li>Real-time WebSocket streaming — instant, token-by-token responses</li>
+          </ul>
+        </div>
+        <!-- Panel 04: Visualization -->
+        <div class="manga-panel panel-purple reveal reveal-delay-4" data-tilt>
+          <div class="panel-number">PANEL 04</div>
+          <span class="panel-icon">🔮</span>
+          <div class="panel-stat"><span class="purple">Visual IDE</span></div>
+          <div class="panel-subtitle">Code Intelligence — See your system</div>
+          <ul class="panel-features">
+            <li>Graph visualization — architecture, callgraph &amp; file tree views with drill-down</li>
+            <li>Color modes — complexity, churn, LOC &amp; type-based node coloring</li>
+            <li>Built-in IDE view — browse files with syntax highlighting</li>
+            <li>i18n ready — German &amp; English out of the box, extensible</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof-section" id="proof">
+    <div class="section-wrap">
+      <div class="section-label reveal">Proof <span class="jp">証拠</span></div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Teams are already <span class="accent">shipping faster.</span>
+      </h2>
+      <div class="proof-grid">
+        <div class="proof-card reveal reveal-delay-2">
+          <span class="proof-quote-mark" aria-hidden="true">「</span>
+          <div class="proof-stat">87%</div>
+          <blockquote>"We reduced new developer ramp-up time by 87%. Juniors are pushing to production in their first week."</blockquote>
+          <cite><strong>Lead Architect</strong> — Series B SaaS Startup</cite>
+        </div>
+        <div class="proof-card reveal reveal-delay-3">
+          <span class="proof-quote-mark" aria-hidden="true">「</span>
+          <div class="proof-stat">47×</div>
+          <blockquote>"Our senior devs finally stopped answering the same questions 47 times a day. They're actually building now."</blockquote>
+          <cite><strong>Engineering Manager</strong> — Fortune 500</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="section-wrap">
+      <div class="section-label reveal">Pricing <span class="jp">価格</span></div>
+      <h2 class="section-title reveal reveal-delay-1">
+        No credit card required.<br><span class="accent">We bet the product sells itself.</span>
+      </h2>
+      <div class="pricing-grid">
+        <!-- Free / Self-Hosted -->
+        <div class="pricing-card reveal reveal-delay-2" data-tilt>
+          <div class="pricing-tier">Open Source</div>
+          <div class="pricing-price">$0 <span>forever</span></div>
+          <p class="pricing-desc">Self-host on your own infra. Full features, no limits.</p>
+          <ul class="pricing-features">
+            <li>Unlimited developers</li>
+            <li>All CKB tools &amp; graph views</li>
+            <li>Ollama for fully local AI</li>
+            <li>Docker &amp; Docker Compose</li>
+            <li>Community support</li>
+          </ul>
+          <a href="#start" class="btn-secondary">Clone &amp; Deploy</a>
+        </div>
+        <!-- Team -->
+        <div class="pricing-card featured reveal reveal-delay-3" data-tilt>
+          <div class="pricing-popular">Most Popular</div>
+          <div class="pricing-tier">Team</div>
+          <div class="pricing-price">$49 <span>/dev/month</span></div>
+          <p class="pricing-desc">Managed hosting with onboarding analytics and priority support.</p>
+          <ul class="pricing-features">
+            <li>Everything in Open Source</li>
+            <li>Managed cloud hosting</li>
+            <li>Multi-provider AI (Gemini, OpenAI, Anthropic)</li>
+            <li>Onboarding analytics &amp; confidence scoring</li>
+            <li>Priority support</li>
+            <li>Automatic CKB indexing</li>
+            <li>SSO integration</li>
+          </ul>
+          <a href="#start" class="btn-primary">Start Free Trial →</a>
+        </div>
+        <!-- Enterprise -->
+        <div class="pricing-card reveal reveal-delay-4" data-tilt>
+          <div class="pricing-tier">Enterprise</div>
+          <div class="pricing-price">Custom</div>
+          <p class="pricing-desc">On-premise deployment with custom models and SLA guarantees.</p>
+          <ul class="pricing-features">
+            <li>Everything in Team</li>
+            <li>On-premise / air-gapped deployment</li>
+            <li>Custom LLM fine-tuning on your codebase</li>
+            <li>Dedicated support engineer</li>
+            <li>SSO / SAML / SCIM</li>
+            <li>SLA guarantees</li>
+            <li>Prometheus &amp; Grafana monitoring</li>
+          </ul>
+          <a href="#contact" class="btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH DEEP DIVE -->
+  <section class="tech-section" id="tech">
+    <div class="section-wrap">
+      <div class="section-label reveal">Architecture <span class="jp">技術</span></div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Built for developers,<br><span class="accent">by developers.</span>
+      </h2>
+      <div class="arch-diagram reveal reveal-delay-2">
+        <div class="arch-block">
+          <h4>Your Codebase</h4>
+          <ul>
+            <li>Git Repository</li>
+            <li>Source Files</li>
+            <li>SCIP Index</li>
+            <li>Import Graph</li>
+          </ul>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <div class="arch-block">
+          <h4>CKB Engine</h4>
+          <ul>
+            <li>MCP Server (stdio/SSE)</li>
+            <li>Semantic Analysis</li>
+            <li>14 Query Tools</li>
+            <li>Hotspot Detection</li>
+          </ul>
+        </div>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <div class="arch-block">
+          <h4>AI + Frontend</h4>
+          <ul>
+            <li>Gemini / OpenAI / Anthropic / Ollama</li>
+            <li>WebSocket Streaming</li>
+            <li>React Flow Graphs</li>
+            <li>Chat + IDE + Onboarding</li>
+          </ul>
+        </div>
+      </div>
+      <div class="security-badges reveal reveal-delay-3">
+        <div class="sec-badge"><span class="badge-icon">◉</span> Path Traversal Protection</div>
+        <div class="sec-badge"><span class="badge-icon">◉</span> Sensitive File Blocking</div>
+        <div class="sec-badge"><span class="badge-icon">◉</span> Rate Limiting (100 req/min)</div>
+        <div class="sec-badge"><span class="badge-icon">◉</span> Docker + K8s Ready</div>
+        <div class="sec-badge"><span class="badge-icon">◉</span> Prometheus Metrics</div>
+        <div class="sec-badge"><span class="badge-icon">◉</span> Ollama — Fully Local Mode</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section" id="start">
+    <div class="section-wrap" style="text-align: center;">
+      <div class="section-label reveal" style="justify-content: center;">
+        Get Started <span class="jp">始める</span>
+      </div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Stop losing knowledge.<br><span class="accent">Start building clarity.</span>
+      </h2>
+      <p class="reveal reveal-delay-2" style="color: var(--text-muted); max-width: 520px; margin: 0 auto;">
+        Join teams who have transformed their engineering culture from knowledge silos to cognitive infrastructure.
+      </p>
+      <div class="cta-buttons reveal reveal-delay-3">
+        <a href="#" class="btn-primary">Start Your Free Trial →</a>
+        <a href="#" class="btn-secondary">See Live Demo</a>
+        <a href="#" class="btn-tertiary">View Documentation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">{nyx.Core}</div>
+          <div class="footer-brand-sub">Cognitive Vault</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Docs</a></li>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Status</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 nyxCore. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="footer-badge">Self-Hosted</span>
+          <span class="footer-badge">Local AI (Ollama)</span>
+          <span class="footer-badge">Open Source</span>
+        </div>
+        <span class="pixel-egg" id="pixel-egg" title="Click me three times...">░▒▓</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== CODE RAIN =====
+    (() => {
+      const canvas = document.getElementById('code-rain');
+      const ctx = canvas.getContext('2d');
+      const katakana = 'ァアィイゥウェエォオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+      const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/{}[]|\\';
+      const chars = katakana + latin;
+      let columns, drops;
+      let animId;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const fontSize = 14;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array.from({ length: columns }, () => Math.random() * -100);
+      }
+
+      function draw() {
+        ctx.fillStyle = 'rgba(7, 2, 18, 0.08)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.font = '14px JetBrains Mono, monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          const x = i * 14;
+          const y = drops[i] * 14;
+
+          // Lead character brighter
+          const brightness = Math.random();
+          if (brightness > 0.95) {
+            ctx.fillStyle = '#ffffff';
+          } else if (brightness > 0.8) {
+            ctx.fillStyle = '#00f5ff';
+          } else {
+            ctx.fillStyle = 'rgba(0, 245, 255, 0.35)';
+          }
+
+          ctx.fillText(char, x, y);
+
+          if (y > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+
+        animId = requestAnimationFrame(draw);
+      }
+
+      // Respect reduced motion
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        resize();
+        draw();
+        window.addEventListener('resize', () => {
+          cancelAnimationFrame(animId);
+          resize();
+          draw();
+        });
+
+        // Pause when tab not visible
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            cancelAnimationFrame(animId);
+          } else {
+            draw();
+          }
+        });
+      }
+    })();
+
+    // ===== SCROLL PROGRESS =====
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
+
+    // ===== NAV SCROLL =====
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ===== HAMBURGER =====
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const spans = hamburger.querySelectorAll('span');
+      if (navLinks.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      }
+    });
+
+    // ===== SCROLL REVEAL =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ===== HOLOGRAPHIC TILT =====
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const rotateX = (y - 0.5) * -10;
+        const rotateY = (x - 0.5) * 10;
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        card.style.setProperty('--mouse-x', (x * 100) + '%');
+        card.style.setProperty('--mouse-y', (y * 100) + '%');
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // ===== TERMINAL EASTER EGG =====
+    let eggClicks = 0;
+    const pixelEgg = document.getElementById('pixel-egg');
+    pixelEgg.addEventListener('click', () => {
+      eggClicks++;
+      pixelEgg.classList.add('activated');
+      setTimeout(() => pixelEgg.classList.remove('activated'), 300);
+      if (eggClicks >= 3) {
+        document.body.classList.toggle('terminal-mode');
+        eggClicks = 0;
+      }
+    });
+
+    // ===== SMOOTH ANCHOR SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile menu if open
+          navLinks.classList.remove('open');
+          hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
