@@ -87,4 +87,28 @@
   .text-glow-cyan {
     text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
   }
+
+  body.terminal-mode {
+    background: #000 !important;
+  }
+  body.terminal-mode * {
+    font-family: var(--font-jetbrains), monospace !important;
+  }
+  body.terminal-mode h1,
+  body.terminal-mode h2,
+  body.terminal-mode h3,
+  body.terminal-mode h4 {
+    -webkit-text-fill-color: #00ff88 !important;
+    background: none !important;
+    color: #00ff88 !important;
+  }
+  body.terminal-mode p,
+  body.terminal-mode li,
+  body.terminal-mode span,
+  body.terminal-mode blockquote {
+    color: rgba(0, 255, 136, 0.7) !important;
+  }
+  body.terminal-mode a {
+    color: #00ff88 !important;
+  }
 }
