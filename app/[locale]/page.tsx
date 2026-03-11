@@ -1,19 +1,32 @@
-import { setRequestLocale } from "next-intl/server";
+"use client";
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
+import { useState } from "react";
+import { Hero } from "@/components/sections/Hero";
+import { Problem } from "@/components/sections/Problem";
+import { Superpowers } from "@/components/sections/Superpowers";
+import { Demo } from "@/components/sections/Demo";
+import { SocialProof } from "@/components/sections/SocialProof";
+import { Downloads } from "@/components/sections/Downloads";
+import { Pricing } from "@/components/sections/Pricing";
+import { TechDeepDive } from "@/components/sections/TechDeepDive";
+import { CtaFinal } from "@/components/sections/CtaFinal";
+import { AirtableForm } from "@/components/ui/AirtableForm";
 
-export default async function Home({ params }: Props) {
-  const { locale } = await params;
-  setRequestLocale(locale);
+export default function Home() {
+  const [formOpen, setFormOpen] = useState(false);
+
   return (
-    <main className="min-h-screen bg-void text-text-primary">
-      <div className="flex items-center justify-center min-h-screen">
-        <h1 className="font-mono text-4xl font-bold text-cyan">
-          {"{"}nyx<span className="text-orange">.</span>Core{"}"}
-        </h1>
-      </div>
+    <main className="min-h-screen">
+      <Hero />
+      <Problem />
+      <Superpowers />
+      <Demo />
+      <SocialProof />
+      <Downloads />
+      <Pricing onOpenForm={() => setFormOpen(true)} />
+      <TechDeepDive />
+      <CtaFinal onOpenForm={() => setFormOpen(true)} />
+      <AirtableForm open={formOpen} onClose={() => setFormOpen(false)} />
     </main>
   );
 }
