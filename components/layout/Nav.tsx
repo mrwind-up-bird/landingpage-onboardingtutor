@@ -59,7 +59,7 @@ export function Nav() {
             href="#"
             className="font-mono text-cyan text-lg font-bold tracking-tight hover:opacity-80 transition-opacity"
           >
-            {"{nyx.Core}"}
+            {"{nyxCore.onboardingTutor}"}
           </a>
 
           {/* Desktop nav links */}

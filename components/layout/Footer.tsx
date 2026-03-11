@@ -43,7 +43,7 @@ export function Footer() {
           {/* Logo */}
           <div>
             <div className="font-mono text-cyan text-lg font-bold tracking-tight mb-1">
-              {"{nyx.Core}"}
+              {"{nyxCore.onboardingTutor}"}
             </div>
             <div className="text-xs text-text-muted font-sans">
               Cognitive Vault
