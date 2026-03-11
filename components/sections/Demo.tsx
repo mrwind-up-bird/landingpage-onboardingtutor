@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { DemoModal } from "@/components/demo/DemoModal";
 
-const demoUrl = process.env.NEXT_PUBLIC_DEMO_URL;
+const rawDemoUrl = process.env.NEXT_PUBLIC_DEMO_URL ?? "";
+const demoUrl = rawDemoUrl.startsWith("https://") ? rawDemoUrl : null;
 
 export function Demo() {
   const t = useTranslations("demo");

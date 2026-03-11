@@ -27,7 +27,8 @@ export function DemoModal({ open, onClose }: Props) {
 
   if (!open) return null;
 
-  const demoUrl = process.env.NEXT_PUBLIC_DEMO_URL;
+  const rawDemoUrl = process.env.NEXT_PUBLIC_DEMO_URL ?? "";
+  const demoUrl = rawDemoUrl.startsWith("https://") ? rawDemoUrl : null;
 
   return (
     <div
@@ -35,7 +36,7 @@ export function DemoModal({ open, onClose }: Props) {
       onClick={(e) => e.target === overlayRef.current && onClose()}
       className="fixed inset-0 z-[2000] flex items-center justify-center bg-void/90 backdrop-blur-md transition-all duration-300"
     >
-      <div className="relative w-[95vw] h-[90vh] max-w-[1400px] bg-card border border-cyan/15 rounded-xl overflow-hidden transition-transform duration-300">
+      <div className="relative w-[95vw] h-[70vh] md:h-[90vh] max-w-[1400px] bg-card border border-cyan/15 rounded-xl overflow-hidden transition-transform duration-300">
         {/* Title bar */}
         <div className="flex items-center justify-between px-4 py-2 bg-deep border-b border-cyan/10">
           <div className="flex items-center gap-2">
@@ -60,7 +61,7 @@ export function DemoModal({ open, onClose }: Props) {
             src={demoUrl}
             className="w-full h-[calc(100%-40px)] border-none"
             title="Onboarding Tutor Demo"
-            sandbox="allow-scripts allow-same-origin allow-forms"
+            sandbox="allow-scripts allow-forms allow-popups"
           />
         ) : (
           <div className="flex items-center justify-center h-[calc(100%-40px)] font-mono text-text-muted">

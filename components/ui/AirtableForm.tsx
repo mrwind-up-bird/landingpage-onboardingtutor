@@ -150,7 +150,7 @@ export function AirtableForm({ open, onClose }: Props) {
                   key={size}
                   type="button"
                   onClick={() => setTeamSize(size)}
-                  className={`flex-1 font-mono text-xs py-2 rounded-lg border transition-all cursor-pointer ${
+                  className={`flex-1 font-mono text-xs py-2.5 min-h-[44px] rounded-lg border transition-all cursor-pointer ${
                     teamSize === size
                       ? "bg-cyan/10 border-cyan/40 text-cyan"
                       : "bg-void/40 border-white/[0.08] text-text-dim hover:border-cyan/20"

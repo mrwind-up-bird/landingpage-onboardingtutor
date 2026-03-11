@@ -6,9 +6,12 @@ import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { HolographicCard } from "@/components/ui/HolographicCard";
 import { detectOS, getDownloads, type Platform } from "@/lib/detect-os";
 
-const RELEASES_REPO =
-  process.env.NEXT_PUBLIC_RELEASES_REPO ?? "https://github.com/mrwind-up-bird/onboarding-tutor-releases";
-const VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION ?? "1.1.0";
+const RAW_REPO = process.env.NEXT_PUBLIC_RELEASES_REPO ?? "";
+const RAW_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION ?? "1.1.0";
+const RELEASES_REPO = RAW_REPO.startsWith("https://github.com/")
+  ? RAW_REPO
+  : "https://github.com/mrwind-up-bird/onboarding-tutor-releases";
+const VERSION = /^\d+\.\d+\.\d+$/.test(RAW_VERSION) ? RAW_VERSION : "1.1.0";
 const DOCKER_CMD = "docker compose --env-file .local.env up";
 
 export function Downloads() {
@@ -107,7 +110,7 @@ export function Downloads() {
                 </code>
                 <button
                   onClick={copyCommand}
-                  className="font-mono text-[0.65rem] text-text-muted bg-white/[0.04] border border-white/[0.08] rounded px-3 py-1.5 hover:text-cyan hover:border-cyan/30 transition-colors cursor-pointer shrink-0"
+                  className="font-mono text-[0.65rem] text-text-muted bg-white/[0.04] border border-white/[0.08] rounded px-4 py-2.5 min-h-[44px] hover:text-cyan hover:border-cyan/30 transition-colors cursor-pointer shrink-0"
                 >
                   {copied ? t("copied") : t("copyCommand")}
                 </button>
