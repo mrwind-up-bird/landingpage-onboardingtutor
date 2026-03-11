@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { Superpowers } from "@/components/sections/Superpowers";
@@ -14,19 +14,21 @@ import { AirtableForm } from "@/components/ui/AirtableForm";
 
 export default function Home() {
   const [formOpen, setFormOpen] = useState(false);
+  const onOpenForm = useCallback(() => setFormOpen(true), []);
+  const onCloseForm = useCallback(() => setFormOpen(false), []);
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <Hero />
       <Problem />
       <Superpowers />
       <Demo />
       <SocialProof />
       <Downloads />
-      <Pricing onOpenForm={() => setFormOpen(true)} />
+      <Pricing onOpenForm={onOpenForm} />
       <TechDeepDive />
-      <CtaFinal onOpenForm={() => setFormOpen(true)} />
-      <AirtableForm open={formOpen} onClose={() => setFormOpen(false)} />
+      <CtaFinal onOpenForm={onOpenForm} />
+      <AirtableForm open={formOpen} onClose={onCloseForm} />
     </main>
   );
 }

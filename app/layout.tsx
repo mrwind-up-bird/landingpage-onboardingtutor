@@ -1,25 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const notoJP = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
-  variable: "--font-noto-jp",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   icons: {
@@ -32,12 +12,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html
-      className={`${jetbrains.variable} ${inter.variable} ${notoJP.variable}`}
-      suppressHydrationWarning
-    >
-      <body className="font-sans">{children}</body>
-    </html>
-  );
+  return children;
 }

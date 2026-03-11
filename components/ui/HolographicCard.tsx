@@ -39,11 +39,11 @@ export function HolographicCard({
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       className={`relative transition-transform duration-150 ease-out will-change-transform ${className}`}
-      style={{ "--glow-color": glowColor } as React.CSSProperties}
     >
       {children}
       <div
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"
+        aria-hidden="true"
         style={{
           background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${glowColor} 0%, transparent 60%)`,
         }}

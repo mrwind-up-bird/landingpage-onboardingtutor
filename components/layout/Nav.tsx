@@ -128,6 +128,7 @@ export function Nav() {
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
+        aria-hidden={!menuOpen}
       >
         <ul className="flex flex-col items-center gap-8 mb-10">
           {NAV_LINKS.map(({ key, href }) => (

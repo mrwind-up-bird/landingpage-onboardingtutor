@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JetBrains_Mono, Inter, Noto_Sans_JP } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -8,6 +9,25 @@ import { Footer } from "@/components/layout/Footer";
 import { Scanlines } from "@/components/layout/Scanlines";
 import { CodeRain } from "@/components/canvas/CodeRain";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const notoJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+  variable: "--font-noto-jp",
+  display: "swap",
+});
 
 type Props = {
   children: React.ReactNode;
@@ -36,15 +56,27 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <div lang={locale}>
-        <ScrollProgress />
-        <CodeRain />
-        <Scanlines />
-        <Nav />
-        {children}
-        <Footer />
-      </div>
-    </NextIntlClientProvider>
+    <html
+      lang={locale}
+      className={`${jetbrains.variable} ${inter.variable} ${notoJP.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="font-sans">
+        <NextIntlClientProvider messages={messages}>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-cyan focus:text-void focus:px-4 focus:py-2 focus:rounded focus:font-mono focus:text-sm"
+          >
+            Skip to main content
+          </a>
+          <ScrollProgress />
+          <CodeRain />
+          <Scanlines />
+          <Nav />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

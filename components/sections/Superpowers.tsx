@@ -52,7 +52,7 @@ export function Superpowers() {
             return (
               <ScrollReveal key={i} delay={200 + i * 100}>
                 <HolographicCard
-                  className={`group bg-card/50 ${color.border} border rounded-xl p-8 hover:border-opacity-50 transition-colors h-full`}
+                  className={`group bg-card/50 ${color.border} border rounded-xl p-8 transition-colors h-full`}
                   glowColor={color.glow}
                 >
                   <div className="flex items-center justify-between mb-4">

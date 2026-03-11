@@ -48,7 +48,7 @@ export function Hero() {
         </ScrollReveal>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-dim font-mono text-[0.65rem] uppercase tracking-[0.2em] animate-float">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-dim font-mono text-[0.65rem] uppercase tracking-[0.2em] animate-float" aria-hidden="true">
         <span>{t("scroll")}</span>
         <svg
           width="16"
@@ -58,6 +58,7 @@ export function Hero() {
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
+          aria-hidden="true"
         >
           <path d="M12 5v14M19 12l-7 7-7-7" />
         </svg>
