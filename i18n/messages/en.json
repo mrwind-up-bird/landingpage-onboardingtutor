@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "nyxCore — Cognitive Vault",
+    "description": "The AI-powered knowledge vault that learns how your team thinks."
+  },
+  "nav": {
+    "problem": "Problem",
+    "features": "Features",
+    "pricing": "Pricing",
+    "tech": "Tech",
+    "downloads": "Downloads",
+    "startFree": "Start Free"
+  }
+}

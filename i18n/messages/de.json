@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "nyxCore — Cognitive Vault",
+    "description": "Der KI-gestützte Wissenstresor, der lernt wie Ihr Team denkt."
+  },
+  "nav": {
+    "problem": "Problem",
+    "features": "Features",
+    "pricing": "Preise",
+    "tech": "Technik",
+    "downloads": "Downloads",
+    "startFree": "Kostenlos starten"
+  }
+}
