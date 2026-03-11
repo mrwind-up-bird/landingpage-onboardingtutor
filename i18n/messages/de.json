@@ -10,5 +10,8 @@
     "tech": "Technik",
     "downloads": "Downloads",
     "startFree": "Kostenlos starten"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten."
   }
 }

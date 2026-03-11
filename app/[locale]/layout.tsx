@@ -3,6 +3,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales, type Locale } from "@/i18n/config";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
+import { Scanlines } from "@/components/layout/Scanlines";
+import { CodeRain } from "@/components/canvas/CodeRain";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
 
 type Props = {
   children: React.ReactNode;
@@ -32,7 +37,14 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <div lang={locale}>{children}</div>
+      <div lang={locale}>
+        <ScrollProgress />
+        <CodeRain />
+        <Scanlines />
+        <Nav />
+        {children}
+        <Footer />
+      </div>
     </NextIntlClientProvider>
   );
 }
