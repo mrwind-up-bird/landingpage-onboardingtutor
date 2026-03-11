@@ -16,7 +16,7 @@
   --color-red: #ff3366;
   --color-text-primary: #e8e6f0;
   --color-text-muted: #7a7590;
-  --color-text-dim: #4a4565;
+  --color-text-dim: #6b6585;
 
   --font-mono: var(--font-jetbrains), "JetBrains Mono", monospace;
   --font-sans: var(--font-inter), "Inter", sans-serif;
@@ -26,26 +26,26 @@
   --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
   --animate-float: float 3s ease-in-out infinite;
   --animate-arrow-pulse: arrow-pulse 2s ease-in-out infinite;
+}
 
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,245,255,0.4); }
-    50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0,245,255,0); }
-  }
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,245,255,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0,245,255,0); }
+}
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
 
-  @keyframes arrow-pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; color: #00f5ff; }
-  }
+@keyframes arrow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; color: #00f5ff; }
 }
 
 @layer base {

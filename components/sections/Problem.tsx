@@ -7,10 +7,6 @@ export function Problem() {
   const t = useTranslations("problem");
   const fails = t.raw("fails") as string[];
 
-  const inversionText = t("inversionText");
-  const boldText = t("inversionBold");
-  const parts = inversionText.split(boldText);
-
   return (
     <section
       id="problem"
@@ -19,7 +15,7 @@ export function Problem() {
       <div className="max-w-[1200px] mx-auto px-5 md:px-12 py-20 md:py-28">
         <ScrollReveal>
           <div className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-cyan mb-3 flex items-center gap-3">
-            <span className="block w-6 h-px bg-cyan" />
+            <span className="block w-6 h-px bg-cyan" aria-hidden="true" />
             {t("label")}{" "}
             <span className="font-jp font-light text-text-dim tracking-wider text-xs">
               {t("jp")}
@@ -67,9 +63,11 @@ export function Problem() {
                 {t("inversionTitle")}
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                {parts[0]}
-                <strong className="text-cyan font-semibold">{boldText}</strong>
-                {parts[1]}
+                {t.rich("inversionText", {
+                  bold: (chunks) => (
+                    <strong className="text-cyan font-semibold">{chunks}</strong>
+                  ),
+                })}
               </p>
             </div>
           </ScrollReveal>

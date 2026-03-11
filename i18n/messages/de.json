@@ -38,8 +38,7 @@
     ],
     "inversionBadge": "\u26a1 Ipcha Mistabra",
     "inversionTitle": "Die Umkehrung",
-    "inversionText": "Statt Entwickler zu zwingen zu dokumentieren, extrahieren wir Wissen direkt aus eurer Codebase \u2014 Architektur, Imports, Symbole, Komplexit\u00e4t, Churn. Richtet CKB auf euer Repo, stellt Fragen auf Deutsch, und bekommt Antworten basierend auf echtem Code-Kontext. Die KI plant die Abfragen. Ihr fragt einfach.",
-    "inversionBold": "extrahieren wir Wissen direkt aus eurer Codebase"
+    "inversionText": "Statt Entwickler zu zwingen zu dokumentieren, <bold>extrahieren wir Wissen direkt aus eurer Codebase</bold> \u2014 Architektur, Imports, Symbole, Komplexit\u00e4t, Churn. Richtet CKB auf euer Repo, stellt Fragen auf Deutsch, und bekommt Antworten basierend auf echtem Code-Kontext. Die KI plant die Abfragen. Ihr fragt einfach."
   },
   "superpowers": {
     "label": "Superkr\u00e4fte",

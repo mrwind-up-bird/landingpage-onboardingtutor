@@ -38,8 +38,7 @@
     ],
     "inversionBadge": "\u26a1 Ipcha Mistabra",
     "inversionTitle": "The Inversion",
-    "inversionText": "Instead of forcing developers to document, we extract knowledge directly from your codebase \u2014 architecture, imports, symbols, complexity, churn. Point CKB at your repo, ask questions in plain English, and get answers grounded in real code context. The AI plans the queries. You just ask.",
-    "inversionBold": "extract knowledge directly from your codebase"
+    "inversionText": "Instead of forcing developers to document, we <bold>extract knowledge directly from your codebase</bold> \u2014 architecture, imports, symbols, complexity, churn. Point CKB at your repo, ask questions in plain English, and get answers grounded in real code context. The AI plans the queries. You just ask."
   },
   "superpowers": {
     "label": "Superpowers",
