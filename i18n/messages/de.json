@@ -8,6 +8,7 @@
     "features": "Features",
     "pricing": "Preise",
     "tech": "Technik",
+    "nyxCore": "nyxCore",
     "downloads": "Downloads",
     "startFree": "Kostenlos starten"
   },
@@ -217,6 +218,40 @@
       "title": "Security-first",
       "badges": ["Self-hosted", "Lokale KI (Ollama)", "Keine Telemetrie", "Deine Daten bleiben bei dir"]
     }
+  },
+  "nyxCore": {
+    "label": "nyxCore",
+    "jp": "\u30b3\u30a2",
+    "title": "Angetrieben von",
+    "titleAccent": "nyxCore.",
+    "subtitle": "Das intelligente R\u00fcckgrat, das rohes Wissen in umsetzbare Systeme verwandelt \u2014 von Compliance bis Training, alles in einer Plattform.",
+    "cta": "nyxCore entdecken",
+    "features": [
+      {
+        "title": "Wisdom",
+        "description": "Konsolidiert projekt\u00fcbergreifende Muster zu wiederverwendbaren Prompt-Hints \u2014 die kollektive Intelligenz eures Teams, destilliert und abfragbar."
+      },
+      {
+        "title": "Workflows",
+        "description": "Dynamische mehrstufige KI-Pipelines mit Fan-Out, Review-Checkpoints und BYOK-Providern \u2014 von Code-Review bis Architektur-Analyse."
+      },
+      {
+        "title": "Dokumentation",
+        "description": "Axiom RAG importiert eure Docs, READMEs und Code-Kontext in eine Hybrid-Suchmaschine \u2014 immer synchron, immer auffindbar."
+      },
+      {
+        "title": "Compliance-Analysen",
+        "description": "Autorit\u00e4tsgestufte RAG-Regeln \u2014 mandatory (DSGVO, ISO, Recht), Guidelines und Kontext-Docs direkt in euren Workflows durchgesetzt."
+      },
+      {
+        "title": "Training",
+        "description": "KI-gef\u00fchrte Onboarding-Pfade aus eurer echten Codebase \u2014 interaktive Walkthroughs, Architektur-Graphen und Natural-Language-Q&A."
+      },
+      {
+        "title": "Sicherheitspr\u00fcfungen",
+        "description": "Automatisiertes Schwachstellen-Scanning, verschl\u00fcsselter API-Key-Vault (AES-256-GCM), RLS-basierte Multi-Tenancy und Audit-Logging integriert."
+      }
+    ]
   },
   "ctaFinal": {
     "jp": "\u59cb\u3081\u308b",

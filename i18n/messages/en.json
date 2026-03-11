@@ -8,6 +8,7 @@
     "features": "Features",
     "pricing": "Pricing",
     "tech": "Tech",
+    "nyxCore": "nyxCore",
     "downloads": "Downloads",
     "startFree": "Start Free"
   },
@@ -217,6 +218,40 @@
       "title": "Security-first",
       "badges": ["Self-hosted", "Local AI (Ollama)", "No telemetry", "Your data stays yours"]
     }
+  },
+  "nyxCore": {
+    "label": "nyxCore",
+    "jp": "\u30b3\u30a2",
+    "title": "Powered by",
+    "titleAccent": "nyxCore.",
+    "subtitle": "The intelligent backbone that turns raw knowledge into actionable systems \u2014 from compliance to training, all in one platform.",
+    "cta": "Explore nyxCore",
+    "features": [
+      {
+        "title": "Wisdom",
+        "description": "Consolidates cross-project patterns into reusable prompt hints \u2014 your team's collective intelligence, distilled and queryable."
+      },
+      {
+        "title": "Workflows",
+        "description": "Dynamic multi-step AI pipelines with fan-out, review checkpoints, and BYOK providers \u2014 from code review to architecture analysis."
+      },
+      {
+        "title": "Documentation",
+        "description": "Axiom RAG ingests your docs, READMEs, and code context into a hybrid search engine \u2014 always in sync, always findable."
+      },
+      {
+        "title": "Compliance Analyses",
+        "description": "Authority-leveled RAG rules \u2014 mandatory (GDPR, ISO, legal), guidelines, and context docs enforced directly in your workflows."
+      },
+      {
+        "title": "Training",
+        "description": "AI-guided onboarding paths generated from your real codebase \u2014 interactive walkthroughs, architecture graphs, and natural language Q&A."
+      },
+      {
+        "title": "Security Checks",
+        "description": "Automated vulnerability scanning, encrypted API key vault (AES-256-GCM), RLS-enforced multi-tenancy, and audit logging built in."
+      }
+    ]
   },
   "ctaFinal": {
     "jp": "\u59cb\u3081\u308b",

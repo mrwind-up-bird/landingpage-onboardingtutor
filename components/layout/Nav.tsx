@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { key: "features", href: "#features" },
   { key: "pricing", href: "#pricing" },
   { key: "tech", href: "#tech" },
+  { key: "nyxCore", href: "#nyxcore" },
   { key: "downloads", href: "#downloads" },
 ] as const;
 

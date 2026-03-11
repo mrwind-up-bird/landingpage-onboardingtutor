@@ -8,6 +8,7 @@ import { Demo } from "@/components/sections/Demo";
 import { SocialProof } from "@/components/sections/SocialProof";
 import { Downloads } from "@/components/sections/Downloads";
 import { Pricing } from "@/components/sections/Pricing";
+import { NyxCore } from "@/components/sections/NyxCore";
 import { TechDeepDive } from "@/components/sections/TechDeepDive";
 import { CtaFinal } from "@/components/sections/CtaFinal";
 import { AirtableForm } from "@/components/ui/AirtableForm";
@@ -26,6 +27,7 @@ export default function Home() {
       <SocialProof />
       <Downloads />
       <Pricing onOpenForm={onOpenForm} />
+      <NyxCore />
       <TechDeepDive />
       <CtaFinal onOpenForm={onOpenForm} />
       <AirtableForm open={formOpen} onClose={onCloseForm} />
