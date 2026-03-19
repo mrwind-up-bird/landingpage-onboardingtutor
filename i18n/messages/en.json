@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "nyxCore — Cognitive Vault",
-    "description": "The AI-powered knowledge vault that learns how your team thinks."
+    "title": "OnboardingTutor by nyxCore — AI-Powered Knowledge & Learning Platform",
+    "description": "Transform codebases, legal documents, compliance content, and HR materials into mastered expertise. Axiom RAG knowledge base, spaced repetition flashcards, and AI-guided onboarding for developers, legal teams, and HR professionals."
   },
   "nav": {
     "problem": "Problem",
@@ -10,6 +10,7 @@
     "tech": "Tech",
     "nyxCore": "nyxCore",
     "downloads": "Downloads",
+    "useCases": "Use Cases",
     "startFree": "Start Free"
   },
   "footer": {
@@ -18,9 +19,9 @@
   "hero": {
     "badge": "Now in Public Beta",
     "jp": "\u30ca\u30ec\u30c3\u30b8\u30fb\u30f4\u30a9\u30fc\u30eb\u30c8",
-    "headlineTop": "From Knowledge Chaos",
-    "headlineBottom": "to Cognitive Clarity",
-    "subtitle": "The AI-powered knowledge vault that learns how your team thinks \u2014 built for developers who hate documentation but love shipping.",
+    "headlineTop": "From Scattered Knowledge",
+    "headlineBottom": "to Mastered Expertise",
+    "subtitle": "The AI-powered learning platform that turns codebases, legal documents, compliance frameworks, and onboarding materials into lasting knowledge — built for dev teams, HR, legal, and anyone who refuses to let expertise die in silos.",
     "ctaPrimary": "Start Free Trial \u2192",
     "ctaSecondary": "See Live Demo",
     "scroll": "Scroll"
@@ -34,65 +35,91 @@
     "fails": [
       "They assume people will write docs (they won't)",
       "They optimize for search, not learning",
-      "They treat knowledge as static snapshots, not living conversations",
-      "They ignore the tribal knowledge that actually runs your systems"
+      "Compliance training is a checkbox exercise — nobody retains ISO 27001 from a PDF",
+      "Onboarding docs are outdated the day they're written, and nobody updates them",
+      "Tribal knowledge walks out the door every time someone leaves",
+      "They ignore that real expertise lives in code, conversations, and people's heads"
     ],
     "inversionBadge": "\u26a1 Ipcha Mistabra",
     "inversionTitle": "The Inversion",
-    "inversionText": "Instead of forcing developers to document, we <bold>extract knowledge directly from your codebase</bold> \u2014 architecture, imports, symbols, complexity, churn. Point CKB at your repo, ask questions in plain English, and get answers grounded in real code context. The AI plans the queries. You just ask."
+    "inversionText": "Instead of forcing people to document, we <bold>extract knowledge directly from your sources</bold> — codebases via CKB, documents and legal texts via Axiom RAG, compliance frameworks via authority-leveled rules. Point it at your repos, your BetrVG documents, your ISO standards. Ask questions in plain English. Get answers grounded in real context, then lock them in with spaced repetition. The AI plans the queries. You just learn."
   },
   "superpowers": {
     "label": "Superpowers",
     "jp": "\u8d85\u80fd\u529b",
-    "title": "Four capabilities that",
+    "title": "Six capabilities that",
     "titleAccent": "change everything.",
     "panels": [
       {
         "number": "PANEL 01",
         "icon": "\ud83d\ude80",
         "stat": "3 Days",
-        "subtitle": "Onboarding \u2014 Down from 3 months",
+        "subtitle": "Onboarding — Down from 3 months",
         "features": [
-          "Interactive architecture graphs \u2014 explore modules, dependencies & call chains with React Flow",
-          "AI-guided onboarding plans \u2014 structured paths through your codebase",
-          "Ask anything in natural language \u2014 \"How does auth work?\" answered with real code context",
-          "Guided walkthroughs \u2014 AI explains not just what the code does, but why it exists"
+          "Developer, HR & compliance onboarding — structured paths through code, policies & processes",
+          "AI-guided onboarding plans — personalized learning journeys for any role",
+          "Ask anything in natural language — \"How does auth work?\" or \"What does §87 BetrVG require?\"",
+          "Guided walkthroughs — AI explains not just what exists, but why it matters"
         ]
       },
       {
         "number": "PANEL 02",
         "icon": "\u26a1",
         "stat": "14 CKB Tools",
-        "subtitle": "Codebase Knowledge Base \u2014 Semantic analysis",
+        "subtitle": "Codebase Knowledge Base — Semantic analysis",
         "features": [
-          "Architecture analysis \u2014 treemaps, heatmaps & dependency graphs with metrics",
-          "Hotspot detection \u2014 churn, complexity & coupling scores per file",
+          "Architecture analysis — treemaps, heatmaps & dependency graphs with metrics",
+          "Hotspot detection — churn, complexity & coupling scores per file",
           "Symbol search & call graph tracing across your entire codebase",
           "Cycle detection & semantic boundary inference via Tarjan\u2019s algorithm"
         ]
       },
       {
         "number": "PANEL 03",
-        "icon": "\ud83e\udde0",
-        "stat": "4 Providers",
-        "subtitle": "Pluggable AI \u2014 Choose your model",
+        "icon": "\ud83d\udcda",
+        "stat": "158+ Docs",
+        "subtitle": "Axiom Knowledge Base — Document-powered RAG",
         "features": [
-          "Gemini, OpenAI, Anthropic \u2014 bring your own API key",
-          "Ollama support \u2014 run fully local, zero data leaves your machine",
-          "AI plans CKB queries automatically \u2014 no prompt engineering needed",
-          "Real-time WebSocket streaming \u2014 instant, token-by-token responses"
+          "Connect to nyxCore Axiom — ingest legal texts, compliance docs, internal wikis & HR policies",
+          "Authority-leveled RAG — mandatory rules (BetrVG, DSGVO, ISO 27001), guidelines & context separated",
+          "Hybrid search with semantic + keyword matching across 158+ document sources",
+          "Auto-generated learning cards from any document — turn passive reading into active recall"
         ]
       },
       {
         "number": "PANEL 04",
-        "icon": "\ud83d\udd2e",
-        "stat": "Visual IDE",
-        "subtitle": "Code Intelligence \u2014 See your system",
+        "icon": "\ud83e\udde0",
+        "stat": "FSRS",
+        "subtitle": "Spaced Repetition — Science-backed retention",
         "features": [
-          "Graph visualization \u2014 architecture, callgraph & file tree views with drill-down",
-          "Color modes \u2014 complexity, churn, LOC & type-based node coloring",
-          "Built-in IDE view \u2014 browse files with syntax highlighting",
-          "i18n ready \u2014 German & English out of the box, extensible"
+          "FSRS algorithm — the same scheduler powering Anki, optimized for professional knowledge",
+          "Bloom\u2019s taxonomy tagging — cards auto-classified from Remember to Create",
+          "Auto-generated flashcards — from code context, legal documents, compliance frameworks",
+          "Definition, scenario & concept card types — matched to your content source"
+        ]
+      },
+      {
+        "number": "PANEL 05",
+        "icon": "\ud83d\udd2e",
+        "stat": "4 Providers",
+        "subtitle": "Pluggable AI — Choose your model",
+        "features": [
+          "Gemini, OpenAI, Anthropic — bring your own API key",
+          "Ollama support — run fully local, zero data leaves your machine",
+          "AI plans CKB queries automatically — no prompt engineering needed",
+          "Real-time WebSocket streaming — instant, token-by-token responses"
+        ]
+      },
+      {
+        "number": "PANEL 06",
+        "icon": "\ud83d\udcbb",
+        "stat": "3 Platforms",
+        "subtitle": "Desktop & Web — Run anywhere",
+        "features": [
+          "Native desktop app — Mac, Windows & Linux binaries via Electron",
+          "Browser mode — full-featured web app, zero install required",
+          "Mobile-first responsive design — review flashcards on the go",
+          "Visual IDE, graph visualization & interactive architecture explorer built in"
         ]
       }
     ]
@@ -116,6 +143,13 @@
         "text": "Our senior devs finally stopped answering the same questions 47 times a day. They\u2019re actually building now.",
         "cite": "Engineering Manager",
         "company": "Fortune 500"
+      },
+      {
+        "stat": "94%",
+        "statNum": 94,
+        "text": "Compliance training retention jumped from 23% to 94% after switching to spaced repetition cards generated from our actual BetrVG and ISO 27001 docs. HR finally stopped chasing people for recertification.",
+        "cite": "Head of People & Compliance",
+        "company": "German Mittelstand (2,400 employees)"
       }
     ]
   },
@@ -124,7 +158,7 @@
     "jp": "\u5b9f\u6f14",
     "title": "See it in action.",
     "titleAccent": "Live.",
-    "tryLive": "Try it Live \u2014 No Signup Required",
+    "tryLive": "Try it Live — No Signup Required",
     "comingSoon": "Coming Soon",
     "loading": "Loading demo...",
     "close": "Close"
@@ -137,7 +171,7 @@
     "recommended": "Recommended for you",
     "allReleases": "View all releases on GitHub \u2192",
     "sourceTitle": "Source Code",
-    "sourceDesc": "v1.1.0 \u00b7 ZIP archive",
+    "sourceDesc": "v1.2.3 \u00b7 ZIP archive",
     "dockerTitle": "Docker + Ollama",
     "dockerDesc": "Run fully local with Docker Compose",
     "copyCommand": "Copy command",
@@ -160,6 +194,8 @@
           "Full CKB analysis (14 tools)",
           "Single repo support",
           "Ollama (local AI) included",
+          "Spaced repetition flashcards",
+          "Single knowledge base",
           "Community support",
           "All graph visualizations"
         ]
@@ -168,12 +204,14 @@
         "name": "Team",
         "price": "$29",
         "period": "/user/month",
-        "description": "For teams that ship together",
+        "description": "For teams that learn and ship together",
         "cta": "Start Free Trial \u2192",
         "badge": "Most Popular",
         "features": [
           "Everything in Free",
           "Multi-repo workspace",
+          "Axiom RAG integration",
+          "Unlimited knowledge bases",
           "Cloud AI providers (Gemini, OpenAI, Anthropic)",
           "Team knowledge sharing",
           "Priority support",
@@ -184,10 +222,12 @@
         "name": "Enterprise",
         "price": "Custom",
         "period": "",
-        "description": "For organizations with complex needs",
+        "description": "For organizations with compliance and scale requirements",
         "cta": "Contact Sales",
         "features": [
           "Everything in Team",
+          "Compliance document management",
+          "Custom onboarding paths",
           "On-premise deployment",
           "Custom AI model integration",
           "Dedicated account manager",
@@ -205,15 +245,15 @@
     "blocks": [
       {
         "title": "Sources",
-        "items": ["Git repos", "File system", "Import graph", "Symbol table", "Churn history"]
+        "items": ["Git repos", "File system", "Import graph", "Symbol table", "Churn history", "Axiom RAG docs", "MCP adapters"]
       },
       {
-        "title": "CKB Engine",
-        "items": ["14 analysis tools", "Tarjan\u2019s SCC", "Complexity metrics", "Dependency graph", "Hotspot detection"]
+        "title": "CKB + Axiom Engine",
+        "items": ["14 analysis tools", "Tarjan\u2019s SCC", "Complexity metrics", "Dependency graph", "Hotspot detection", "Axiom RAG pipeline", "Authority-leveled rules"]
       },
       {
         "title": "AI + Frontend",
-        "items": ["Multi-provider LLM", "WebSocket streaming", "React Flow graphs", "Interactive IDE", "i18n support"]
+        "items": ["Multi-provider LLM", "WebSocket streaming", "React Flow graphs", "Interactive IDE", "FSRS scheduler", "PGlite DB", "i18n support"]
       }
     ],
     "security": {
@@ -226,28 +266,28 @@
     "jp": "\u30b3\u30a2",
     "title": "Powered by",
     "titleAccent": "nyxCore.",
-    "subtitle": "The intelligent backbone that turns raw knowledge into actionable systems \u2014 from compliance to training, all in one platform.",
+    "subtitle": "The intelligent backbone that turns raw knowledge into actionable systems — from compliance to training, all in one platform.",
     "cta": "Explore nyxCore",
     "features": [
       {
         "title": "Wisdom",
-        "description": "Consolidates cross-project patterns into reusable prompt hints \u2014 your team's collective intelligence, distilled and queryable."
+        "description": "Consolidates cross-project patterns into reusable prompt hints — your team's collective intelligence, distilled and queryable."
       },
       {
         "title": "Workflows",
-        "description": "Dynamic multi-step AI pipelines with fan-out, review checkpoints, and BYOK providers \u2014 from code review to architecture analysis."
+        "description": "Dynamic multi-step AI pipelines with fan-out, review checkpoints, and BYOK providers — from code review to architecture analysis."
       },
       {
         "title": "Documentation",
-        "description": "Axiom RAG ingests your docs, READMEs, and code context into a hybrid search engine \u2014 always in sync, always findable."
+        "description": "Axiom RAG ingests your docs, legal texts, compliance frameworks, and code context into a hybrid search engine with authority-leveled rules — mandatory, guideline, and context documents always separated, always in sync."
       },
       {
         "title": "Compliance Analyses",
-        "description": "Authority-leveled RAG rules \u2014 mandatory (GDPR, ISO, legal), guidelines, and context docs enforced directly in your workflows."
+        "description": "Authority-leveled RAG rules — mandatory (GDPR, ISO 27001, BetrVG), guidelines, and context docs enforced directly in your workflows."
       },
       {
         "title": "Training",
-        "description": "AI-guided onboarding paths generated from your real codebase \u2014 interactive walkthroughs, architecture graphs, and natural language Q&A."
+        "description": "AI-guided onboarding paths generated from your real sources — interactive walkthroughs, architecture graphs, natural language Q&A, and FSRS spaced repetition flashcards with Bloom's taxonomy tagging for lasting retention."
       },
       {
         "title": "Security Checks",
@@ -257,9 +297,9 @@
   },
   "ctaFinal": {
     "jp": "\u59cb\u3081\u308b",
-    "title": "Ready to stop losing",
-    "titleAccent": "tribal knowledge?",
-    "subtitle": "Join teams shipping faster with AI-powered codebase understanding.",
+    "title": "Ready to transform how",
+    "titleAccent": "your team learns?",
+    "subtitle": "Join teams mastering codebases, compliance, and onboarding with AI-powered knowledge retention.",
     "ctaPrimary": "Start Free Trial \u2192",
     "ctaSecondary": "See Live Demo",
     "ctaTertiary": "Read the Docs"
@@ -278,6 +318,9 @@
       "architecture": "Architecture",
       "codeReview": "Code Review",
       "knowledgeBase": "Knowledge Base",
+      "compliance": "Compliance & Legal",
+      "hr": "HR Onboarding",
+      "education": "Education & Training",
       "other": "Other"
     },
     "submit": "Start Free Trial \u2192",

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "nyxCore — Cognitive Vault",
-    "description": "Der KI-gest\u00fctzte Wissenstresor, der lernt wie Ihr Team denkt."
+    "title": "OnboardingTutor von nyxCore — KI-gest\u00fctzte Wissens- & Lernplattform",
+    "description": "Verwandelt Codebases, Rechtstexte, Compliance-Inhalte und HR-Materialien in nachhaltig gemeisterte Expertise. Axiom-RAG-Wissensbasis, Spaced-Repetition-Lernkarten und KI-gef\u00fchrtes Onboarding f\u00fcr Entwickler, Rechtsabteilungen und HR-Teams."
   },
   "nav": {
     "problem": "Problem",
@@ -10,6 +10,7 @@
     "tech": "Technik",
     "nyxCore": "nyxCore",
     "downloads": "Downloads",
+    "useCases": "Anwendungen",
     "startFree": "Kostenlos starten"
   },
   "footer": {
@@ -18,9 +19,9 @@
   "hero": {
     "badge": "Jetzt in Public Beta",
     "jp": "\u30ca\u30ec\u30c3\u30b8\u30fb\u30f4\u30a9\u30fc\u30eb\u30c8",
-    "headlineTop": "Vom Wissens-Chaos",
-    "headlineBottom": "zur kognitiven Klarheit",
-    "subtitle": "Der KI-gest\u00fctzte Wissenstresor, der lernt wie Ihr Team denkt \u2014 f\u00fcr Entwickler, die Docs hassen aber Shipping lieben.",
+    "headlineTop": "Von verstreutem Wissen",
+    "headlineBottom": "zu gemeisterter Expertise",
+    "subtitle": "Die KI-gest\u00fctzte Lernplattform, die Codebases, Rechtstexte, Compliance-Frameworks und Onboarding-Materialien in bleibendes Wissen verwandelt \u2014 f\u00fcr Dev-Teams, HR, Recht und alle, die nicht zulassen, dass Expertise in Silos stirbt.",
     "ctaPrimary": "Kostenlos starten \u2192",
     "ctaSecondary": "Live Demo",
     "scroll": "Scrollen"
@@ -34,17 +35,19 @@
     "fails": [
       "Sie nehmen an, dass Leute Docs schreiben (werden sie nicht)",
       "Sie optimieren f\u00fcr Suche, nicht f\u00fcr Lernen",
-      "Sie behandeln Wissen als statische Momentaufnahmen, nicht als lebendige Gespr\u00e4che",
-      "Sie ignorieren das Stammwissen, das eure Systeme tats\u00e4chlich am Laufen h\u00e4lt"
+      "Compliance-Schulungen sind Pflicht\u00fcbungen \u2014 niemand beh\u00e4lt ISO 27001 aus einem PDF",
+      "Onboarding-Dokumente sind am Tag ihrer Erstellung veraltet, und niemand pflegt sie",
+      "Stammwissen geht jedes Mal verloren, wenn jemand das Unternehmen verl\u00e4sst",
+      "Sie ignorieren, dass echte Expertise in Code, Gespr\u00e4chen und den K\u00f6pfen der Leute lebt"
     ],
     "inversionBadge": "\u26a1 Ipcha Mistabra",
     "inversionTitle": "Die Umkehrung",
-    "inversionText": "Statt Entwickler zu zwingen zu dokumentieren, <bold>extrahieren wir Wissen direkt aus eurer Codebase</bold> \u2014 Architektur, Imports, Symbole, Komplexit\u00e4t, Churn. Richtet CKB auf euer Repo, stellt Fragen auf Deutsch, und bekommt Antworten basierend auf echtem Code-Kontext. Die KI plant die Abfragen. Ihr fragt einfach."
+    "inversionText": "Statt Menschen zu zwingen zu dokumentieren, <bold>extrahieren wir Wissen direkt aus euren Quellen</bold> \u2014 Codebases \u00fcber CKB, Dokumente und Rechtstexte \u00fcber Axiom RAG, Compliance-Frameworks \u00fcber autorit\u00e4tsgestufte Regeln. Richtet es auf eure Repos, eure BetrVG-Dokumente, eure ISO-Standards. Stellt Fragen auf Deutsch. Bekommt Antworten basierend auf echtem Kontext und verankert sie mit Spaced Repetition. Die KI plant die Abfragen. Ihr lernt einfach."
   },
   "superpowers": {
     "label": "Superkr\u00e4fte",
     "jp": "\u8d85\u80fd\u529b",
-    "title": "Vier F\u00e4higkeiten, die",
+    "title": "Sechs F\u00e4higkeiten, die",
     "titleAccent": "alles ver\u00e4ndern.",
     "panels": [
       {
@@ -53,10 +56,10 @@
         "stat": "3 Tage",
         "subtitle": "Onboarding \u2014 Runter von 3 Monaten",
         "features": [
-          "Interaktive Architektur-Graphen \u2014 Module, Abh\u00e4ngigkeiten & Call-Chains mit React Flow erkunden",
-          "KI-gef\u00fchrte Onboarding-Pl\u00e4ne \u2014 strukturierte Pfade durch eure Codebase",
-          "Frag alles in nat\u00fcrlicher Sprache \u2014 \"Wie funktioniert die Auth?\" beantwortet mit echtem Code-Kontext",
-          "Gef\u00fchrte Walkthroughs \u2014 KI erkl\u00e4rt nicht nur was der Code tut, sondern warum er existiert"
+          "Developer-, HR- & Compliance-Onboarding \u2014 strukturierte Pfade durch Code, Richtlinien & Prozesse",
+          "KI-gef\u00fchrte Onboarding-Pl\u00e4ne \u2014 personalisierte Lernreisen f\u00fcr jede Rolle",
+          "Frag alles in nat\u00fcrlicher Sprache \u2014 \u201eWie funktioniert die Auth?\u201c oder \u201eWas verlangt \u00a787 BetrVG?\u201c",
+          "Gef\u00fchrte Walkthroughs \u2014 KI erkl\u00e4rt nicht nur was existiert, sondern warum es wichtig ist"
         ]
       },
       {
@@ -73,7 +76,31 @@
       },
       {
         "number": "PANEL 03",
+        "icon": "\ud83d\udcda",
+        "stat": "158+ Docs",
+        "subtitle": "Axiom-Wissensbasis \u2014 Dokumentenbasiertes RAG",
+        "features": [
+          "Anbindung an nyxCore Axiom \u2014 Rechtstexte, Compliance-Docs, interne Wikis & HR-Richtlinien einlesen",
+          "Autorit\u00e4tsgestuftes RAG \u2014 Pflichtregeln (BetrVG, DSGVO, ISO 27001), Leitlinien & Kontext getrennt",
+          "Hybridsuche mit semantischem + Keyword-Matching \u00fcber 158+ Dokumentenquellen",
+          "Auto-generierte Lernkarten aus jedem Dokument \u2014 passives Lesen wird aktives Erinnern"
+        ]
+      },
+      {
+        "number": "PANEL 04",
         "icon": "\ud83e\udde0",
+        "stat": "FSRS",
+        "subtitle": "Spaced Repetition \u2014 Wissenschaftlich fundiertes Behalten",
+        "features": [
+          "FSRS-Algorithmus \u2014 derselbe Scheduler, der Anki antreibt, optimiert f\u00fcr Fachwissen",
+          "Blooms-Taxonomie-Tagging \u2014 Karten automatisch klassifiziert von Erinnern bis Erschaffen",
+          "Auto-generierte Lernkarten \u2014 aus Code-Kontext, Rechtstexten, Compliance-Frameworks",
+          "Definitions-, Szenario- & Konzeptkarten-Typen \u2014 abgestimmt auf eure Inhaltsquelle"
+        ]
+      },
+      {
+        "number": "PANEL 05",
+        "icon": "\ud83d\udd2e",
         "stat": "4 Anbieter",
         "subtitle": "Pluggable KI \u2014 W\u00e4hle dein Modell",
         "features": [
@@ -84,15 +111,15 @@
         ]
       },
       {
-        "number": "PANEL 04",
-        "icon": "\ud83d\udd2e",
-        "stat": "Visuelle IDE",
-        "subtitle": "Code Intelligence \u2014 Sieh dein System",
+        "number": "PANEL 06",
+        "icon": "\ud83d\udcbb",
+        "stat": "3 Plattformen",
+        "subtitle": "Desktop & Web \u2014 \u00dcberall nutzbar",
         "features": [
-          "Graph-Visualisierung \u2014 Architektur-, Callgraph- & Dateibaum-Ansichten mit Drill-Down",
-          "Farbmodi \u2014 Komplexit\u00e4t, Churn, LOC & typbasierte Knoten-F\u00e4rbung",
-          "Eingebaute IDE-Ansicht \u2014 Dateien mit Syntax-Highlighting durchsuchen",
-          "i18n-ready \u2014 Deutsch & Englisch ab Werk, erweiterbar"
+          "Native Desktop-App \u2014 Mac-, Windows- & Linux-Binaries via Electron",
+          "Browser-Modus \u2014 vollwertige Web-App, keine Installation n\u00f6tig",
+          "Mobile-First Responsive Design \u2014 Lernkarten unterwegs wiederholen",
+          "Visuelle IDE, Graph-Visualisierung & interaktiver Architektur-Explorer integriert"
         ]
       }
     ]
@@ -116,6 +143,13 @@
         "text": "Unsere Senior-Devs beantworten endlich nicht mehr 47 Mal am Tag die gleichen Fragen. Sie bauen jetzt tats\u00e4chlich.",
         "cite": "Engineering Manager",
         "company": "Fortune 500"
+      },
+      {
+        "stat": "94%",
+        "statNum": 94,
+        "text": "Die Compliance-Schulungsretention ist von 23% auf 94% gestiegen, seit wir auf Spaced-Repetition-Karten aus unseren echten BetrVG- und ISO-27001-Dokumenten umgestellt haben. HR muss endlich niemanden mehr f\u00fcr Rezertifizierungen hinterherlaufen.",
+        "cite": "Head of People & Compliance",
+        "company": "Deutscher Mittelstand (2.400 Mitarbeitende)"
       }
     ]
   },
@@ -137,7 +171,7 @@
     "recommended": "Empfohlen f\u00fcr dich",
     "allReleases": "Alle Releases auf GitHub ansehen \u2192",
     "sourceTitle": "Quellcode",
-    "sourceDesc": "v1.1.0 \u00b7 ZIP-Archiv",
+    "sourceDesc": "v1.2.3 \u00b7 ZIP-Archiv",
     "dockerTitle": "Docker + Ollama",
     "dockerDesc": "Komplett lokal mit Docker Compose",
     "copyCommand": "Befehl kopieren",
@@ -160,6 +194,8 @@
           "Volle CKB-Analyse (14 Tools)",
           "Einzelnes Repo",
           "Ollama (lokale KI) inklusive",
+          "Spaced-Repetition-Lernkarten",
+          "Einzelne Wissensbasis",
           "Community Support",
           "Alle Graph-Visualisierungen"
         ]
@@ -168,12 +204,14 @@
         "name": "Team",
         "price": "29\u20ac",
         "period": "/Nutzer/Monat",
-        "description": "F\u00fcr Teams, die zusammen shippen",
+        "description": "F\u00fcr Teams, die zusammen lernen und shippen",
         "cta": "Kostenlos testen \u2192",
         "badge": "Am beliebtesten",
         "features": [
           "Alles aus Free",
           "Multi-Repo Workspace",
+          "Axiom-RAG-Integration",
+          "Unbegrenzte Wissensbasen",
           "Cloud KI-Anbieter (Gemini, OpenAI, Anthropic)",
           "Team-Wissensaustausch",
           "Priority Support",
@@ -184,10 +222,12 @@
         "name": "Enterprise",
         "price": "Individuell",
         "period": "",
-        "description": "F\u00fcr Organisationen mit komplexen Anforderungen",
+        "description": "F\u00fcr Organisationen mit Compliance- und Skalierungsanforderungen",
         "cta": "Vertrieb kontaktieren",
         "features": [
           "Alles aus Team",
+          "Compliance-Dokumentenmanagement",
+          "Individuelle Onboarding-Pfade",
           "On-Premise Deployment",
           "Custom KI-Modell-Integration",
           "Dedizierter Account Manager",
@@ -205,15 +245,15 @@
     "blocks": [
       {
         "title": "Quellen",
-        "items": ["Git Repos", "Dateisystem", "Import-Graph", "Symboltabelle", "Churn-Verlauf"]
+        "items": ["Git Repos", "Dateisystem", "Import-Graph", "Symboltabelle", "Churn-Verlauf", "Axiom-RAG-Docs", "MCP-Adapter"]
       },
       {
-        "title": "CKB Engine",
-        "items": ["14 Analyse-Tools", "Tarjans SCC", "Komplexit\u00e4tsmetriken", "Dependency-Graph", "Hotspot-Erkennung"]
+        "title": "CKB + Axiom Engine",
+        "items": ["14 Analyse-Tools", "Tarjans SCC", "Komplexit\u00e4tsmetriken", "Dependency-Graph", "Hotspot-Erkennung", "Axiom-RAG-Pipeline", "Autorit\u00e4tsgestufte Regeln"]
       },
       {
         "title": "KI + Frontend",
-        "items": ["Multi-Provider LLM", "WebSocket-Streaming", "React Flow Graphen", "Interaktive IDE", "i18n-Support"]
+        "items": ["Multi-Provider LLM", "WebSocket-Streaming", "React Flow Graphen", "Interaktive IDE", "FSRS-Scheduler", "PGlite DB", "i18n-Support"]
       }
     ],
     "security": {
@@ -239,15 +279,15 @@
       },
       {
         "title": "Dokumentation",
-        "description": "Axiom RAG importiert eure Docs, READMEs und Code-Kontext in eine Hybrid-Suchmaschine \u2014 immer synchron, immer auffindbar."
+        "description": "Axiom RAG importiert eure Docs, Rechtstexte, Compliance-Frameworks und Code-Kontext in eine Hybrid-Suchmaschine mit autorit\u00e4tsgestuften Regeln \u2014 Pflicht-, Leitlinien- und Kontextdokumente immer getrennt, immer synchron."
       },
       {
         "title": "Compliance-Analysen",
-        "description": "Autorit\u00e4tsgestufte RAG-Regeln \u2014 mandatory (DSGVO, ISO, Recht), Guidelines und Kontext-Docs direkt in euren Workflows durchgesetzt."
+        "description": "Autorit\u00e4tsgestufte RAG-Regeln \u2014 Pflicht (DSGVO, ISO 27001, BetrVG), Leitlinien und Kontext-Docs direkt in euren Workflows durchgesetzt."
       },
       {
         "title": "Training",
-        "description": "KI-gef\u00fchrte Onboarding-Pfade aus eurer echten Codebase \u2014 interaktive Walkthroughs, Architektur-Graphen und Natural-Language-Q&A."
+        "description": "KI-gef\u00fchrte Onboarding-Pfade aus euren echten Quellen \u2014 interaktive Walkthroughs, Architektur-Graphen, Natural-Language-Q&A und FSRS-Spaced-Repetition-Lernkarten mit Blooms-Taxonomie-Tagging f\u00fcr nachhaltige Wissensverankerung."
       },
       {
         "title": "Sicherheitspr\u00fcfungen",
@@ -257,9 +297,9 @@
   },
   "ctaFinal": {
     "jp": "\u59cb\u3081\u308b",
-    "title": "Bereit, kein Stammwissen",
-    "titleAccent": "mehr zu verlieren?",
-    "subtitle": "Schlie\u00df dich Teams an, die schneller shippen mit KI-gest\u00fctztem Codebase-Verst\u00e4ndnis.",
+    "title": "Bereit, das Lernen eures Teams",
+    "titleAccent": "zu transformieren?",
+    "subtitle": "Schlie\u00dft euch Teams an, die Codebases, Compliance und Onboarding mit KI-gest\u00fctzter Wissensverankerung meistern.",
     "ctaPrimary": "Kostenlos starten \u2192",
     "ctaSecondary": "Live Demo",
     "ctaTertiary": "Docs lesen"
@@ -278,6 +318,9 @@
       "architecture": "Architektur",
       "codeReview": "Code Review",
       "knowledgeBase": "Wissensdatenbank",
+      "compliance": "Compliance & Recht",
+      "hr": "HR-Onboarding",
+      "education": "Aus- & Weiterbildung",
       "other": "Andere"
     },
     "submit": "Kostenlos testen \u2192",

@@ -7,8 +7,10 @@ import { HolographicCard } from "@/components/ui/HolographicCard";
 const PANEL_COLORS = [
   { border: "border-cyan/20", stat: "text-cyan", glow: "rgba(0,245,255,0.06)" },
   { border: "border-orange/20", stat: "text-orange", glow: "rgba(255,107,53,0.06)" },
-  { border: "border-green/20", stat: "text-green", glow: "rgba(0,255,136,0.06)" },
   { border: "border-purple/20", stat: "text-purple", glow: "rgba(139,92,246,0.06)" },
+  { border: "border-green/20", stat: "text-green", glow: "rgba(0,255,136,0.06)" },
+  { border: "border-cyan/20", stat: "text-cyan", glow: "rgba(0,245,255,0.06)" },
+  { border: "border-orange/20", stat: "text-orange", glow: "rgba(255,107,53,0.06)" },
 ];
 
 type Panel = {

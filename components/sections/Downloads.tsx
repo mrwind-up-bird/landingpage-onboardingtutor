@@ -7,11 +7,11 @@ import { HolographicCard } from "@/components/ui/HolographicCard";
 import { detectOS, getDownloads, type Platform } from "@/lib/detect-os";
 
 const RAW_REPO = process.env.NEXT_PUBLIC_RELEASES_REPO ?? "";
-const RAW_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION ?? "1.1.0";
+const RAW_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION ?? "1.2.3";
 const RELEASES_REPO = RAW_REPO.startsWith("https://github.com/")
   ? RAW_REPO
   : "https://github.com/mrwind-up-bird/landingpage-onboardingtutor";
-const VERSION = /^\d+\.\d+\.\d+$/.test(RAW_VERSION) ? RAW_VERSION : "1.1.0";
+const VERSION = /^\d+\.\d+\.\d+$/.test(RAW_VERSION) ? RAW_VERSION : "1.2.3";
 const DOCKER_CMD = "docker compose --env-file .local.env up";
 
 export function Downloads() {
